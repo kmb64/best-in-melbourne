@@ -20,8 +20,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/burgers', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/burger.html',
+        controller: 'BurgerCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
