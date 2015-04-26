@@ -8,7 +8,7 @@
         <li data-ng-repeat="venue in burgerPlace.venues">{{venue.suburb}}</li>
       </ul>
     <span>{{burgerPlace.votes}}  votes</span>
-    <button>Vote</button>
+    <button data-ng-click="updateVote(burgerPlace)">Vote</button>
     <a href="{{burgerPlace.website.link}}">{{burgerPlace.website.name}}</a>
     <a data-ng-repeat="socialMedia in burgerPlace.social" href="{{socialMedia.link}}">
       {{socialMedia.channel}}: {{socialMedia.name}}</a>
