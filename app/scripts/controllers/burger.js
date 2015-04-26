@@ -1,4 +1,4 @@
-/*global $firebaseArray, Firebase */
+/*global Firebase */
 'use strict';
 
 /**
