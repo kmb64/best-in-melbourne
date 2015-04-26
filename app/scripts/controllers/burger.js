@@ -3,7 +3,7 @@
 
 /**
  * @ngdoc function
- * @name bestInMelbourneApp.controller:MainCtrl
+ * @name bestInMelbourneApp.controller:BurgerCtrl
  * @description
  * # BurgerCtrl
  * Controller of the bestInMelbourneApp
