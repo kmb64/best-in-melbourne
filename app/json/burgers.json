@@ -10,7 +10,8 @@
       {
         "channel" : "instagram",
         "name": "theroyalebros",
-        "link": "https://instagram.com/theroyalebros/"
+        "link": "https://instagram.com/theroyalebros/",
+        "userId" : "649901699"
       }
     ],
     "venues" : [
@@ -33,7 +34,8 @@
       {
         "channel" : "instagram",
         "name" : "grandtrailerpark",
-        "link" : "https://instagram.com/grandtrailerpark/"
+        "link" : "https://instagram.com/grandtrailerpark/",
+        "userId" : "1536176574"
       }
       ],
     "venues" : [
@@ -56,7 +58,8 @@
       {
         "channel" : "instagram",
         "name" : "humburgermelb",
-        "link" : "https://instagram.com/humburgermelb/"
+        "link" : "https://instagram.com/humburgermelb/",
+        "userId" : "731652740"
       }
     ],
     "venues" : [
@@ -79,7 +82,8 @@
       {
         "channel" : "facebook",
         "name" : "Brother Burger and The Marvellous Brew",
-        "link" : "http://www.facebook.com/brotherburger"
+        "link" : "http://www.facebook.com/brotherburger",
+        "userId" : "172285316237538"
       }
     ],
     "venues" : [
