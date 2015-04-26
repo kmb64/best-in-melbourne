@@ -1,16 +1,21 @@
 <h2>What's the best burger place in Melbourne?</h2>
+<p>Facebook https://graph.facebook.com/v2.3/172285316237538/picture?redirect=false</p>
 <p>Instagram get user info: https://api.instagram.com/v1/users/search?q=theroyalebros&client_id=0a5a8e73d67249a8bb13f00948c9a864</p>
 <p>Instagram get recents for user: https://api.instagram.com/v1/users/649901699/media/recent/?client_id=0a5a8e73d67249a8bb13f00948c9a864</p>
+
 <ul>
   <li data-ng-repeat="burgerPlace in places| orderBy:'-votes'">
+    <img src="{{burgerPlace.profilePicture}}" alt=""/>
     <h3>{{burgerPlace.title}}</h3>
       <ul>
         <li data-ng-repeat="venue in burgerPlace.venues">{{venue.suburb}}</li>
       </ul>
     <span>{{burgerPlace.votes}}  votes</span>
     <button data-ng-click="updateVote(burgerPlace)">Vote</button>
-    <a href="{{burgerPlace.website.link}}">{{burgerPlace.website.name}}</a>
-    <a data-ng-repeat="socialMedia in burgerPlace.social" href="{{socialMedia.link}}">
+    <a target="_blank" href="{{burgerPlace.website.link}}">{{burgerPlace.website.name}}</a>
+    <a data-ng-repeat="socialMedia in burgerPlace.social"
+       target="_blank"
+       href="{{socialMedia.link}}">
       {{socialMedia.channel}}: {{socialMedia.name}}</a>
   </li>
 </ul>
