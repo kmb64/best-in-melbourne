@@ -1,4 +1,4 @@
-/*global $firebaseObject, Firebase */
+/*global $firebaseArray, Firebase */
 'use strict';
 
 /**
@@ -9,10 +9,10 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('BurgerCtrl',function ($scope, $firebaseObject) {
+  .controller('BurgerCtrl',function ($scope, $firebaseArray) {
 
     var ref = new Firebase('https://vivid-inferno-5850.firebaseio.com/');
-    $scope.places = $firebaseObject(ref);
+    $scope.places = $firebaseArray(ref);
 
     $scope.updateVote = function(place){
       var burger = $scope.places.$getRecord(place.$id);
