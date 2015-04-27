@@ -15,7 +15,7 @@ describe('Controller: BurgerCtrl', function () {
     firebaseArray = function(){
       return {
         $loaded : function(successCallback, failCallback){
-          successCallback();
+          successCallback([0,1,2]);
         }
       }
     };
