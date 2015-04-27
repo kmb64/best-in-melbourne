@@ -13,7 +13,11 @@ describe('Controller: BurgerCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     firebaseArray = function(){
-      return [0,1,2];
+      return {
+        $loaded : function(successCallback, failCallback){
+          successCallback();
+        }
+      }
     };
     MainCtrl = $controller('BurgerCtrl', {
       $scope: scope,

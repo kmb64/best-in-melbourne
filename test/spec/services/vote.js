@@ -11,6 +11,15 @@ describe('Service: VoteService', function () {
       votes : 0
     };
 
+    module(function ($provide) {
+      $provide.value('$window', {
+        localStorage: {
+          getItem: function () {},
+          setItem: function () {}
+        }
+      });
+    });
+
   });
 
   it('should allow increment the number of votes for a burger place', inject(function (Vote, $window) { //parameter name = service name
@@ -21,7 +30,9 @@ describe('Service: VoteService', function () {
 
   }));
 
-  xit('should not update a places vote if the user doesn\'t have local storage', inject(function(Vote, $window){
+  it('should not update a places vote if the user doesn\'t have local storage', inject(function(Vote, $window){
+
+    $window.localStorage = false;
     //spyOn($window, 'localStorage').and.returnValue(false);
     //console.log($window.localStorage());
     //console.log(delete $window.localStorage);
