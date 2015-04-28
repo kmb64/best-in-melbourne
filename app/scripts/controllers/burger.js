@@ -16,15 +16,27 @@ angular.module('bestInMelbourneApp')
 
     var auth = $firebaseAuth(ref);
 
-    if(auth.$getAuth()) {
-      console.log(auth.$getAuth())
-    } else {
-      auth.$authAnonymously().then(function(authData) {
-        console.log("Logged in as:", authData.uid);
-      }).catch(function(error) {
-        console.error("Authentication failed:", error);
-      });
-    }
+    auth.$onAuth(function(authData){
+      if(authData) {
+        console.log(authData);
+
+      }else {
+
+        auth.$authWithOAuthRedirect("facebook").then(function(authData) {
+          console.log("Logged in as:", authData.uid);
+        }).catch(function(error) {
+          console.error("Authentication failed:", error);
+        });
+
+      }
+
+    });
+
+
+    $scope.logOut = function(){
+      console.log('logging out!');
+      auth.$unauth();
+    };
 
     $firebaseArray(ref).$loaded(function(places){
       $scope.places = places;
