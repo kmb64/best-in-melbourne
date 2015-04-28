@@ -9,10 +9,22 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('BurgerCtrl', ['$scope', '$firebaseArray', 'Vote', '$http', function ($scope, $firebaseArray, Vote, $http ) {
+  .controller('BurgerCtrl', ['$scope', '$firebaseArray', '$firebaseAuth', 'Vote', '$http', function ($scope, $firebaseArray, $firebaseAuth, Vote, $http ) {
 
     var ref = new Firebase('https://vivid-inferno-5850.firebaseio.com/');
     //$scope.places = $firebaseArray(ref);
+
+    var auth = $firebaseAuth(ref);
+
+    if(auth.$getAuth()) {
+      console.log(auth.$getAuth())
+    } else {
+      auth.$authAnonymously().then(function(authData) {
+        console.log("Logged in as:", authData.uid);
+      }).catch(function(error) {
+        console.error("Authentication failed:", error);
+      });
+    }
 
     $firebaseArray(ref).$loaded(function(places){
       $scope.places = places;
