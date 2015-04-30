@@ -2,15 +2,19 @@
 
 describe('Service: SocialService', function () {
 
-  var mockSocial;
+  var mockSocial, mockConfig, mockHttp;
 
   beforeEach(module('bestInMelbourneApp'));
 
   beforeEach(function(){
 
-    //module(function ($provide) {
-    //  $provide.value('$window', mockWindow);
-    //});
+    mockConfig = {
+      profilePicture : {
+        facebook : 'www.facebook.com',
+        twitter : 'www.twitter.com',
+        instagram : 'www.instagram.com'
+      }
+    };
 
     mockSocial = {
       channel: 'twitter',
@@ -19,11 +23,24 @@ describe('Service: SocialService', function () {
       userId: "123abc"
     };
 
+    mockHttp = {
+      jsonp : function(){}
+    };
+
+    module(function ($provide) {
+      $provide.constant('config', mockConfig);
+    });
+
+    module(function($provide){
+      $provide.value('$http', mockHttp);
+    });
+
   });
 
-  it('should retrieve a places profile picture for a given social media user id', inject(function(Social){
-    var profilePictureLink = Social.getProfilePicture(mockSocial);
-    expect(profilePictureLink).toBe('http://blah.com/profile.png');
+  it('should call a social media endpoint to get a profile picture link', inject(function(Social, config, $http){
+    spyOn($http, 'jsonp');
+    Social.getProfilePicture(mockSocial);
+    expect($http.jsonp).toHaveBeenCalledWith(mockConfig.profilePicture.twitter);
   }));
 
 });
