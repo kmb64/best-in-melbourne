@@ -10,14 +10,17 @@ describe('Service: SocialService', function () {
 
     mockConfig = {
       profilePicture : {
-        facebook : 'www.facebook.com',
-        twitter : 'www.twitter.com',
-        instagram : 'www.instagram.com'
+        instagram : function(){
+          return {
+            endPoint : 'instagram.com',
+            params : {blah : 1234}
+          };
+        }
       }
     };
 
     mockSocial = {
-      channel: 'twitter',
+      channel: 'instagram',
       name: 'bestburgers',
       link: "https://twitter.com/bestburgers/",
       userId: "123abc"
@@ -40,7 +43,7 @@ describe('Service: SocialService', function () {
   it('should call a social media endpoint to get a profile picture link', inject(function(Social, config, $http){
     spyOn($http, 'jsonp');
     Social.getProfilePicture(mockSocial);
-    expect($http.jsonp).toHaveBeenCalledWith(mockConfig.profilePicture.twitter);
+    expect($http.jsonp).toHaveBeenCalledWith('instagram.com', {params : {blah : 1234, callback : 'JSON_CALLBACK'}});
   }));
 
 });
