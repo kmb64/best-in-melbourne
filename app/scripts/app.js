@@ -28,6 +28,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/vote/:place', {
+        templateUrl: 'views/vote.html',
+        controller: 'VoteCtrl'
+      })
       .otherwise({
         redirectTo: '/burgers'
       });

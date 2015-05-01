@@ -9,13 +9,15 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('BurgerCtrl', ['$scope', '$firebaseArray', '$firebaseAuth', 'Vote', 'Social',
-    function ($scope, $firebaseArray, $firebaseAuth, Vote, Social) {
+  .controller('BurgerCtrl', ['$scope', '$firebaseArray', '$firebaseAuth', 'Vote', 'Social', 'config',
+    function ($scope, $firebaseArray, $firebaseAuth, Vote, Social, config) {
 
-      var ref = new Firebase('https://vivid-inferno-5850.firebaseio.com/');
-      //$scope.places = $firebaseArray(ref);
+      var ref = new Firebase(config.firebase);
+      var auth = $firebaseAuth(ref);
 
-      //var auth = $firebaseAuth(ref);
+      auth.$onAuth(function(authData){
+        console.log('run onauth' + authData);
+      });
       //
       //console.log(auth.$getAuth());
       //
@@ -36,10 +38,10 @@ angular.module('bestInMelbourneApp')
       //});
 
 
-      //$scope.logOut = function(){
-      //  console.log('logging out!');
-      //  auth.$unauth();
-      //};
+      $scope.logOut = function(){
+        console.log('logging out!');
+        auth.$unauth();
+      };
 
       $firebaseArray(ref).$loaded(function (places) {
         $scope.places = places;

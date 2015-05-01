@@ -3,6 +3,8 @@
 angular.module('bestInMelbourneApp')
   .constant('config', {
 
+    firebase : 'https://vivid-inferno-5850.firebaseio.com/',
+
     instagram : {
       clientId : '0a5a8e73d67249a8bb13f00948c9a864'
     },
