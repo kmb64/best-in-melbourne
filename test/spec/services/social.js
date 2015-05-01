@@ -2,22 +2,11 @@
 
 describe('Service: SocialService', function () {
 
-  var mockSocial, mockConfig, mockHttp;
+  var mockSocial, mockConfig, mockHttp, mockPromise, successCallback;
 
   beforeEach(module('bestInMelbourneApp'));
 
   beforeEach(function(){
-
-    mockConfig = {
-      profilePicture : {
-        instagram : function(){
-          return {
-            endPoint : 'instagram.com',
-            params : {blah : 1234}
-          };
-        }
-      }
-    };
 
     mockSocial = {
       channel: 'instagram',
@@ -26,24 +15,48 @@ describe('Service: SocialService', function () {
       userId: "123abc"
     };
 
+    mockConfig = {
+      profilePicture : {
+        instagram : function(){
+          return {
+            endPoint : 'instagram.com',
+            params : {blah : 1234},
+            accessor : 'profile_picture'
+          };
+        }
+      }
+    };
+
     mockHttp = {
       jsonp : function(){}
+    };
+
+    mockPromise = {
+      then : function(successCallback){
+        successCallback();
+      }
     };
 
     module(function ($provide) {
       $provide.constant('config', mockConfig);
     });
 
-    module(function($provide){
-      $provide.value('$http', mockHttp);
-    });
-
   });
 
-  it('should call a social media endpoint to get a profile picture link', inject(function(Social, config, $http){
-    spyOn($http, 'jsonp');
-    Social.getProfilePicture(mockSocial);
-    expect($http.jsonp).toHaveBeenCalledWith('instagram.com', {params : {blah : 1234, callback : 'JSON_CALLBACK'}});
+  it('should call a the instagram api to get a profile picture link', inject(function(Social, config, $http, $httpBackend, $rootScope){
+    var resolvedValue;
+    $httpBackend.whenJSONP('instagram.com?blah=1234&callback=JSON_CALLBACK').respond({ status :  200, data: {profile_picture : 'profilepic123'}});
+    var promise = Social.getProfilePicture(mockSocial);
+    $httpBackend.flush();
+
+    // Simulate resolving of promise
+    promise.then(function (response) {
+      resolvedValue = response;
+    });
+
+    // Propagate promise resolution to 'then' functions using $apply().
+    $rootScope.$apply();
+    expect(resolvedValue).toBe('profilepic123');
   }));
 
 });
