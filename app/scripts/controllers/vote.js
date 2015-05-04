@@ -10,13 +10,30 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('VoteCtrl',['$scope','$firebaseAuth', 'config', '$routeParams',
-    function ($scope, $firebaseAuth, config, $routeParams) {
+  .controller('VoteCtrl', ['$scope', '$firebaseAuth', '$firebaseObject', 'config', '$routeParams',
+    function ($scope, $firebaseAuth, $firebaseObject, config, $routeParams) {
 
-    var ref = new Firebase(config.firebase);
-    var auth = $firebaseAuth(ref);
+      var auth = $firebaseAuth(new Firebase(config.firebase));
+      var syncObject = $firebaseObject(new Firebase(config.firebase +$routeParams.place));
 
-      $scope.place = $routeParams.place;
-      console.log($scope.place);
+      syncObject.$bindTo($scope, 'place');
 
-  }]);
+      auth.$onAuth(function (authData) {
+        $scope.authorized = authData;
+        if (authData) {
+          var provider = authData.provider;
+          $scope.status = 'Welcome, ' + authData[provider].displayName;
+        }
+      });
+
+      $scope.getAuthorized = function (provider) {
+        auth.$authWithOAuthRedirect(provider, function (error) {
+          $scope.status = 'fail redirect' + error;
+        });
+      };
+
+      $scope.logOut = function () {
+        auth.$unauth();
+      };
+
+    }]);

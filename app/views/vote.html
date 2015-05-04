@@ -1,1 +1,15 @@
-<h1>Vote page</h1>
+<div data-ng-show="authorized">
+  <button data-ng-click="place.votes = place.votes + 1">Confirm your vote</button>
+</div>
+<div data-ng-show="!authorized">
+  <button data-ng-click="getAuthorized('facebook')">Vote using Facebook</button>
+  <button data-ng-click="getAuthorized('google')">Vote using Google</button>
+</div>
+
+<button data-ng-click="logOut()">Log out</button>
+
+
+<h1>{{status}}</h1>
+
+<h2>{{place.title}}</h2>
+<h3>Votes : {{place.votes}}</h3>
