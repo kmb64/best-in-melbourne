@@ -7,25 +7,41 @@ describe('Controller: BurgerCtrl', function () {
 
   var MainCtrl,
     scope,
-    firebaseArray;
+    firebaseArray,
+    mockPlace,
+    mockSocialService;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+
+    mockPlace = {
+      social : [
+        {instagram : 0}
+      ]
+    };
+
+    mockSocialService = {
+      getProfilePicture : function(){
+        return {then:function(){}};
+      }
+    };
+
     firebaseArray = function(){
       return {
-        $loaded : function(successCallback, failCallback){
-          successCallback([0,1,2]);
+        $loaded : function(successCallback){
+          successCallback([mockPlace]);
         }
       }
     };
     MainCtrl = $controller('BurgerCtrl', {
       $scope: scope,
-      $firebaseArray : firebaseArray
+      $firebaseArray : firebaseArray,
+      Social : mockSocialService
     });
   }));
 
   it('should attach a list of burger places to the scope', function () {
-    expect(scope.places).toEqual([0,1,2]);
+    expect(scope.places).toEqual([mockPlace]);
   });
 });

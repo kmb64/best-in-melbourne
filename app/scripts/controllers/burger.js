@@ -14,14 +14,17 @@ angular.module('bestInMelbourneApp')
 
       var ref = new Firebase(config.firebase);
 
-      $firebaseArray(ref).$loaded(function (places) {
-        $scope.places = places;
-
-        angular.forEach($scope.places, function(val){
-          Social.getProfilePicture(val.social[0]).then(function(response){
-            val.profilePicture = response;
+      var assignProfilePictures = function(places){
+        angular.forEach(places, function(place){
+          Social.getProfilePicture(place.social[0]).then(function(response){
+            place.profilePicture = response;
           });
         });
+      };
+
+      $firebaseArray(ref).$loaded(function (places) {
+        $scope.places = places;
+        assignProfilePictures(places);
       });
 
     }]);
