@@ -34,14 +34,14 @@ describe('Controller: BurgerCtrl', function () {
         }
       }
     };
-    MainCtrl = $controller('BurgerCtrl', {
+    MainCtrl = $controller('PlaceCtrl', {
       $scope: scope,
       $firebaseArray : firebaseArray,
       Social : mockSocialService
     });
   }));
 
-  it('should attach a list of burger places to the scope', function () {
+  it('should attach a list of places to the scope', function () {
     expect(scope.places).toEqual([mockPlace]);
   });
 });

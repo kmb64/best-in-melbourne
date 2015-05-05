@@ -3,13 +3,13 @@
 
 /**
  * @ngdoc function
- * @name bestInMelbourneApp.controller:BurgerCtrl
+ * @name bestInMelbourneApp.controller:PlaceCtrl
  * @description
- * # BurgerCtrl
+ * PlaceCtrl
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('BurgerCtrl', ['$scope', '$firebaseArray', 'Vote', 'Social', 'config',
+  .controller('PlaceCtrl', ['$scope', '$firebaseArray', 'Vote', 'Social', 'config',
     function ($scope, $firebaseArray, Vote, Social, config) {
 
       var ref = new Firebase(config.firebase);
