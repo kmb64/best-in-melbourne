@@ -1,0 +1,22 @@
+.colour-animation {
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  //color : transparent;
+  -webkit-animation: hue 20s infinite linear alternate;
+  -o-animation: hue 20s infinite linear alternate;
+  animation: hue 20s infinite linear alternate;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(250deg);
+    filter : hue-rotate(250deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(310deg);
+    filter: hue-rotate(310deg);
+  }
+}
