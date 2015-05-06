@@ -45,8 +45,8 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.scss'],
+        tasks: ['sass','newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -83,8 +83,8 @@ module.exports = function (grunt) {
                 connect.static('./bower_components')
               ),
               connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
+                '/.tmp/styles',
+                connect.static('./.tmp')
               ),
               connect.static(appConfig.app)
             ];
@@ -404,6 +404,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'sass',
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
