@@ -1,7 +1,3 @@
-<h2 class="content-heading">Where's the best <span class="animated bounceInRight">
-  <span class="place-type colour-animation">burger</span>
-</span>?</h2>
-
 <ul>
   <li class="card" data-ng-repeat="place in places| orderBy:'-votes'">
 
@@ -16,12 +12,12 @@
       <a data-ng-repeat="socialMedia in place.social"
          target="_blank"
          href="{{socialMedia.link}}">
-        {{socialMedia.channel}}: {{socialMedia.name}}</a>
+        <span class="socicon">x</span> {{socialMedia.name}}</a>
     </div>
 
     <div class="voting">
       <span>{{place.votes}}  votes</span>
-      <a href="{{'#/vote/' + place.$id}}">Vote</a>
+      <a class="vote-cta" href="{{'#/vote/' + place.$id}}">Vote</a>
     </div>
 
 
