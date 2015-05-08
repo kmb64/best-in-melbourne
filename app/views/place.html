@@ -1,5 +1,5 @@
 <ul>
-  <li class="card" data-ng-repeat="place in places| orderBy:'-votes'">
+  <li class="card flex-row" data-ng-repeat="place in places| orderBy:'-votes'">
 
     <div class="profile-picture"><img src="{{place.profilePicture}}" alt=""/></div>
 
@@ -17,7 +17,7 @@
 
     <div class="voting">
       <span>{{place.votes}}  votes</span>
-      <a class="vote-cta" href="{{'#/vote/' + place.$id}}">Vote</a>
+      <a class="vote-btn cta" href="{{'#/vote/' + place.$id}}">Vote</a>
     </div>
 
 

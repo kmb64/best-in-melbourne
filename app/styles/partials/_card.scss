@@ -1,8 +1,4 @@
 .card {
-  display : flex;
-  flex-direction : row;
-  flex-wrap : nowrap;
-
   background : #fff;
   padding : 6px;
   margin: 0 0 10px 0;
@@ -17,6 +13,7 @@
       border-radius : 2px;
       width : 70px;
       height: 70px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
   }
 
@@ -46,17 +43,30 @@
     position : relative;
     margin-left: 6px;
 
-    .vote-cta {
-      font-size : 12px;
-      position : absolute;
-      bottom : 0;
-      right : 0;
-      display : block;
-      border-radius : 2px;
-      border : 2px solid #a668fe;
-      padding: 10px;
-      color : #a668fe;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    .vote-btn {
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+
+  }
+
+  .cta {
+    display : block;
+    border-radius : 2px;
+    border : 2px solid #a668fe;
+    padding: 10px;
+    color : #a668fe;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    font-size : 14px;
+
+    &.social {
+      width : 80%;
+      text-align: center;
+      margin : 10px auto;
+      span {
+        font-size : 16px;
+      }
     }
 
   }

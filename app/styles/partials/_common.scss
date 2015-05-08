@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 ul {
   margin : 0;
   padding : 0;
@@ -7,4 +11,10 @@ ul {
 a {
   color : #3b3b3b;
   text-decoration: none;
+}
+
+.flex-row {
+  display : flex;
+  flex-direction : row;
+  flex-wrap : nowrap;
 }
