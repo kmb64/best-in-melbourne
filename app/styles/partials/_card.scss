@@ -1,0 +1,42 @@
+.card {
+  display : flex;
+  flex-direction : row;
+  flex-wrap : nowrap;
+
+  background : #fff;
+  padding : 10px;
+  margin: 0 0 10px 0;
+  color : #3b3b3b;
+  border-radius : 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-size: 12px;
+
+  .profile-picture {
+    display: inline-block;
+    img {
+      border-radius : 2px;
+      width : 80px;
+      height: 80px;
+    }
+  }
+
+  .profile-info {
+    display: inline-block;
+    flex: 2 0px;
+    margin-left:10px;
+
+    h3 {
+      display : inline-block;
+      margin : 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+  }
+
+  .voting {
+    display: inline-block;
+    align-content : flex-end;
+
+  }
+}

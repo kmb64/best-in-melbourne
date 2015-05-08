@@ -1,21 +1,30 @@
-<h2 class="">Where's the best <span class="animated bounceInRight">
-  <span class="place-title colour-animation">burger</span>
+<h2 class="content-heading">Where's the best <span class="animated bounceInRight">
+  <span class="place-type colour-animation">burger</span>
 </span>?</h2>
 
 <ul>
-  <li data-ng-repeat="place in places| orderBy:'-votes'">
-    <img src="{{place.profilePicture}}" alt=""/>
-    <h3>{{place.title}}</h3>
+  <li class="card" data-ng-repeat="place in places| orderBy:'-votes'">
+
+    <div class="profile-picture"><img src="{{place.profilePicture}}" alt=""/></div>
+
+    <div class="profile-info">
+      <h3>{{place.title}}</h3>
       <ul>
         <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
       </ul>
-    <span>{{place.votes}}  votes</span>
-    <a href="{{'#/vote/' + place.$id}}">Vote</a>
-    <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
-    <a data-ng-repeat="socialMedia in place.social"
-       target="_blank"
-       href="{{socialMedia.link}}">
-      {{socialMedia.channel}}: {{socialMedia.name}}</a>
+      <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
+      <a data-ng-repeat="socialMedia in place.social"
+         target="_blank"
+         href="{{socialMedia.link}}">
+        {{socialMedia.channel}}: {{socialMedia.name}}</a>
+    </div>
+
+    <div class="voting">
+      <span>{{place.votes}}  votes</span>
+      <a href="{{'#/vote/' + place.$id}}">Vote</a>
+    </div>
+
+
   </li>
 </ul>
 
