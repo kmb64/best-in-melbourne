@@ -8,7 +8,7 @@
   -webkit-animation: hue 20s infinite linear alternate;
 }
 
-@keyframes hue {
+@-webkit-keyframes hue {
   from {
     -webkit-filter: hue-rotate(250deg);
   }
