@@ -22,8 +22,29 @@ angular.module('bestInMelbourneApp')
       return deferred.promise;
     };
 
+    var getRecentMedia = function(social){
+
+      var deferred = $q.defer();
+
+      var mediaSource = config.recentMedia[social.channel](social.userId),
+        url = mediaSource.endPoint,
+        params = mediaSource.params;
+
+      params.callback = 'JSON_CALLBACK';
+
+      $http.jsonp(url, {params: params}).then(function(response){
+        deferred.resolve(response.data.data);
+      },function(){
+        deferred.resolve('default image link?');
+      });
+
+      return deferred.promise;
+
+    };
+
     return {
-      getProfilePicture : getProfilePicture
+      getProfilePicture : getProfilePicture,
+      getRecentMedia : getRecentMedia
     };
 
   }]);

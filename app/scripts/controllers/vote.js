@@ -10,13 +10,21 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('VoteCtrl', ['$scope', '$firebaseAuth', '$firebaseObject', 'config', '$routeParams',
-    function ($scope, $firebaseAuth, $firebaseObject, config, $routeParams) {
+  .controller('VoteCtrl', ['$scope', '$firebaseAuth', '$firebaseObject', 'config', '$routeParams', 'Social',
+    function ($scope, $firebaseAuth, $firebaseObject, config, $routeParams, Social) {
 
       var auth = $firebaseAuth(new Firebase(config.firebase));
-      var syncObject = $firebaseObject(new Firebase(config.firebase +$routeParams.place));
+      var place = $firebaseObject(new Firebase(config.firebase +$routeParams.place));
 
-      syncObject.$bindTo($scope, 'place');
+      place.$loaded(function(){
+        place.$bindTo($scope, 'place');
+
+        Social.getRecentMedia(place.social[0]).then(function(response){
+          console.log(response);
+          $scope.media = response;
+        });
+
+      });
 
       auth.$onAuth(function (authData) {
         $scope.authorized = authData;

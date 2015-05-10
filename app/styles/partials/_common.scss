@@ -16,5 +16,10 @@ a {
 .flex-row {
   display : flex;
   flex-direction : row;
-  flex-wrap : nowrap;
+  flex-wrap : wrap;
 }
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+

@@ -4,11 +4,21 @@
 </div>
 
 <div class="card">
-  <div>
-    <h1>{{status}}</h1>
 
-    <h2>{{place.title}}</h2>
-    <h3>Votes : {{place.votes}}</h3>
+  <div class="profile-info">
+    <h3>{{place.title}}</h3>
+    <ul>
+      <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
+    </ul>
+    <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
+    <a data-ng-repeat="socialMedia in place.social | limitTo : 6"
+       target="_blank"
+       href="{{socialMedia.link}}">
+      <span class="socicon">x</span> {{socialMedia.name}}</a>
+  </div>
+
+  <div class="flex-row profile-images">
+    <img data-ng-repeat="m in media | limitTo : 8" src="{{m.images.thumbnail.url}}" alt=""/>
   </div>
 
 </div>
