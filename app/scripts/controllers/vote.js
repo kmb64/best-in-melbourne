@@ -20,11 +20,16 @@ angular.module('bestInMelbourneApp')
         place.$bindTo($scope, 'place');
 
         Social.getRecentMedia(place.social[0]).then(function(response){
-          console.log(response);
           $scope.media = response;
         });
 
+        Social.getMyLastName().then(function(response){
+          console.log(response);
+        });
+
       });
+
+
 
       auth.$onAuth(function (authData) {
         $scope.authorized = authData;

@@ -44,7 +44,20 @@ angular.module('bestInMelbourneApp')
 
     return {
       getProfilePicture : getProfilePicture,
-      getRecentMedia : getRecentMedia
+      getRecentMedia : getRecentMedia,
+      getMyLastName: function() {
+        var deferred = $q.defer();
+        FB.api('/172285316237538/photos', {
+
+        }, function(response) {
+          if (!response || response.error) {
+            deferred.reject('Error occured');
+          } else {
+            deferred.resolve(response);
+          }
+        });
+        return deferred.promise;
+      }
     };
 
   }]);
