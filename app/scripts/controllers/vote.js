@@ -14,7 +14,8 @@ angular.module('bestInMelbourneApp')
     function ($scope, $firebaseAuth, $firebaseObject, config, $routeParams, Social) {
 
       var auth = $firebaseAuth(new Firebase(config.firebase));
-      var place = $firebaseObject(new Firebase(config.firebase +$routeParams.place));
+      var place = $firebaseObject(new Firebase(config.firebase + $routeParams.type + '/' + $routeParams.place));
+      $scope.$parent.placeType = $routeParams.type;
 
       place.$loaded(function(){
         place.$bindTo($scope, 'place');

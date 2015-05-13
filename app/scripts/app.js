@@ -20,7 +20,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/places/:type', {
+      .when('/melbourne/:type', {
         templateUrl: 'views/place.html',
         controller: 'PlaceCtrl'
       })
@@ -28,12 +28,12 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/vote/:place', {
+      .when('/melbourne/:type/vote/:place', {
         templateUrl: 'views/vote.html',
         controller: 'VoteCtrl'
       })
       .otherwise({
-        redirectTo: '/places/burgers'
+        redirectTo: '/melbourne/burger'
       });
   }).run(['$window', function($window){
 

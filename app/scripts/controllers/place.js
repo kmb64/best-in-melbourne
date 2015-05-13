@@ -9,10 +9,11 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('PlaceCtrl', ['$scope', '$firebaseArray', 'Vote', 'Social', 'config',
-    function ($scope, $firebaseArray, Vote, Social, config) {
+  .controller('PlaceCtrl', ['$scope', '$firebaseArray', 'Vote', 'Social', 'config', '$routeParams',
+    function ($scope, $firebaseArray, Vote, Social, config, $routeParams) {
 
-      var ref = new Firebase(config.firebase);
+      var ref = new Firebase(config.firebase + $routeParams.type);
+      $scope.$parent.placeType = $routeParams.type;
 
       var assignProfilePictures = function(places){
         angular.forEach(places, function(place){
