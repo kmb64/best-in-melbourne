@@ -18,12 +18,12 @@
   </div>
 
   <div class="flex-row profile-images">
-    <img data-ng-repeat="m in media | limitTo : 8" src="{{m.images.thumbnail.url}}" alt=""/>
+    <a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>
   </div>
 
 </div>
 
 <div class="card" data-ng-show="!authorized">
-  <a class="social cta" data-ng-click="getAuthorized('facebook')"><span class="socicon">b</span> Vote using Facebook</a>
-  <a class="social cta" data-ng-click="getAuthorized('google')"><span class="socicon">c</span> Vote using Google</a>
+  <a href="#" class="social cta" data-ng-click="getAuthorized('facebook')"><span class="socicon">b</span> Vote using Facebook</a>
+  <a href="#" class="social cta" data-ng-click="getAuthorized('google')"><span class="socicon">c</span> Vote using Google</a>
 </div>

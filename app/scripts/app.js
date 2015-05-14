@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'firebase'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($locationProvider, $routeProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider
       .when('/melbourne/:type', {
         templateUrl: 'views/place.html',

@@ -1,10 +1,14 @@
 <ul>
-  <li class="card flex-row flex-nowrap" data-ng-repeat="place in places| orderBy:'-votes'">
+  <li class="animated fadeInUp card flex-row flex-nowrap" data-ng-repeat="place in places| orderBy:'-votes'">
 
-    <div class="profile-picture"><img src="{{place.profilePicture}}" alt=""/></div>
+    <div class="profile-picture">
+      <a href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}">
+        <img src="{{place.profilePicture}}" alt=""/>
+      </a>
+    </div>
 
     <div class="profile-info">
-      <h3>{{place.title}}</h3>
+      <a href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}"><h3>{{place.title}}</h3></a>
       <ul>
         <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
       </ul>
@@ -17,7 +21,7 @@
 
     <div class="voting">
       <span>{{place.votes}}  votes</span>
-      <a class="vote-btn cta" href="{{'#/melbourne/' + placeType + '/vote/' + place.$id}}">Vote</a>
+      <a class="vote-btn cta" href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}">Vote</a>
     </div>
 
 

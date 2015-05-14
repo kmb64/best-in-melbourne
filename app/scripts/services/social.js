@@ -47,7 +47,7 @@ angular.module('bestInMelbourneApp')
       getRecentMedia : getRecentMedia,
       getMyLastName: function() {
         var deferred = $q.defer();
-        FB.api('/172285316237538/photos', {
+        FB.api('/172285316237538', {
 
         }, function(response) {
           if (!response || response.error) {
