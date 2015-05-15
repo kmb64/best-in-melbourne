@@ -10,8 +10,8 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth', '$window',
-    function ($scope, $firebaseObject, config, $routeParams, Social, Auth, $window) {
+  .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth',
+    function ($scope, $firebaseObject, config, $routeParams, Social, Auth) {
 
       var ref = new Firebase(config.firebase + $routeParams.type + '/' + $routeParams.place);
       var place = $firebaseObject(ref);
@@ -44,10 +44,6 @@ angular.module('bestInMelbourneApp')
 
       $scope.logOut = function () {
         auth.$unauth();
-      };
-
-      $scope.backToList = function(){
-        $window.history.back();
       };
 
     }]);
