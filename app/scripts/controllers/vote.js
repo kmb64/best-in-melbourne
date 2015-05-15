@@ -10,12 +10,14 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('VoteCtrl', ['$scope', '$firebaseAuth', '$firebaseObject', 'config', '$routeParams', 'Social',
-    function ($scope, $firebaseAuth, $firebaseObject, config, $routeParams, Social) {
+  .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth',
+    function ($scope, $firebaseObject, config, $routeParams, Social, Auth) {
 
-      var auth = $firebaseAuth(new Firebase(config.firebase));
-      var place = $firebaseObject(new Firebase(config.firebase + $routeParams.type + '/' + $routeParams.place));
+      var ref = new Firebase(config.firebase + $routeParams.type + '/' + $routeParams.place);
+      var place = $firebaseObject(ref);
+
       $scope.$parent.placeType = $routeParams.type;
+      var auth = Auth.getAuth();
 
       place.$loaded(function(){
         place.$bindTo($scope, 'place');
@@ -30,14 +32,8 @@ angular.module('bestInMelbourneApp')
 
       });
 
-
-
       auth.$onAuth(function (authData) {
         $scope.authorized = authData;
-        if (authData) {
-          var provider = authData.provider;
-          $scope.status = 'Welcome, ' + authData[provider].displayName;
-        }
       });
 
       $scope.getAuthorized = function (provider) {

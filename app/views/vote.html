@@ -3,7 +3,7 @@
   <button data-ng-click="logOut()">Log out</button>
 </div>
 
-<div class="card">
+<div data-ng-if="place" class="card fadeIn animated">
 
   <div class="profile-info">
     <h3>{{place.title}}</h3>
@@ -17,9 +17,9 @@
       <span class="socicon">x</span> {{socialMedia.name}}</a>
   </div>
 
-  <div class="flex-row profile-images">
-    <a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>
-  </div>
+  <!--<div class="flex-row profile-images">-->
+    <!--<a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>-->
+  <!--</div>-->
 
 </div>
 
