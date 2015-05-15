@@ -48,28 +48,6 @@
       right: 0;
       position: absolute;
     }
-
   }
 
-  .cta {
-    display : block;
-    border-radius : 2px;
-    background : #a668fe;
-    border : 2px solid #a668fe;
-    padding: 10px;
-    //color : #a668fe;
-    color : white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    font-size : 14px;
-
-    &.social {
-      width : 80%;
-      text-align: center;
-      margin : 10px auto;
-      span {
-        font-size : 16px;
-      }
-    }
-
-  }
 }

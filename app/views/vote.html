@@ -1,7 +1,4 @@
-<div data-ng-show="authorized">
-  <button data-ng-click="place.votes = place.votes + 1">Confirm your vote</button>
-  <button data-ng-click="logOut()">Log out</button>
-</div>
+<a class="back-button" data-ng-click="backToList()">&#60; back</a>
 
 <div data-ng-if="place" class="card fadeIn animated">
 
@@ -24,6 +21,11 @@
 </div>
 
 <div class="card" data-ng-show="!authorized">
-  <a href="#" class="social cta" data-ng-click="getAuthorized('facebook')"><span class="socicon">b</span> Vote using Facebook</a>
-  <a href="#" class="social cta" data-ng-click="getAuthorized('google')"><span class="socicon">c</span> Vote using Google</a>
+  <a class="big cta" data-ng-click="getAuthorized('facebook')"><span class="socicon">b</span> Vote using Facebook</a>
+  <a class="big cta" data-ng-click="getAuthorized('google')"><span class="socicon">c</span> Vote using Google</a>
+</div>
+
+<div class="card" data-ng-show="authorized">
+  <a class="big cta" data-ng-click="place.votes = place.votes + 1">Confirm your vote</a>
+  <a class="big cta" data-ng-click="logOut()">Log out</a>
 </div>
