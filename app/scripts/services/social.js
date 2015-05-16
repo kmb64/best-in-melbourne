@@ -45,7 +45,7 @@ angular.module('bestInMelbourneApp')
     return {
       getProfilePicture : getProfilePicture,
       getRecentMedia : getRecentMedia,
-      getMyLastName: function() {
+      getFBProfile: function() {
         var deferred = $q.defer();
         FB.api('/172285316237538', {
 

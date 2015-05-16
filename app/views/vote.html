@@ -2,20 +2,32 @@
 
 <div data-ng-if="place" class="card fadeIn animated">
 
-  <div class="profile-info">
+  <div class="cover-image-container">
+    <span class="votes">
+      <ng-pluralize
+        count="place.votes"
+        when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">
+      </ng-pluralize>
+    </span>
+
+    <img class="cover-img" data-ng-src="{{fb.cover.source}}" alt="" />
+
     <h3>{{place.title}}</h3>
-    <ul>
-      <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
-    </ul>
-    <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
-    <a data-ng-repeat="socialMedia in place.social | limitTo : 6"
-       target="_blank"
-       href="{{socialMedia.link}}">
-      <span class="socicon">x</span> {{socialMedia.name}}</a>
+
   </div>
+  <p>"{{fb.description}}"</p>
+
+  <ul>
+    <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
+  </ul>
+  <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
+  <a data-ng-repeat="socialMedia in place.social | limitTo : 6"
+     target="_blank"
+     href="{{socialMedia.link}}">
+    <span class="socicon">x</span> {{socialMedia.name}}</a>
 
   <!--<div class="flex-row profile-images">-->
-    <!--<a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>-->
+  <!--<a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>-->
   <!--</div>-->
 
 </div>

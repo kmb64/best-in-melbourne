@@ -13,14 +13,22 @@
         <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
       </ul>
       <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
-      <a data-ng-repeat="socialMedia in place.social | limitTo : 6"
+      <a title="{{socialMedia.channel}}" data-ng-switch="socialMedia.channel" data-ng-repeat="socialMedia in place.social | limitTo : 6"
          target="_blank"
          href="{{socialMedia.link}}">
-        <span class="socicon">x</span> {{socialMedia.name}}</a>
+        <span data-ng-switch-when="instagram" class="socicon">x</span>
+        <span data-ng-switch-when="facebook" class="socicon">b</span>
+        <span data-ng-switch-when="twitter" class="socicon">a</span>
+        {{socialMedia.name}}</a>
     </div>
 
     <div class="voting">
-      <span>{{place.votes}}  votes</span>
+      <span>
+        <ng-pluralize
+          count="place.votes"
+          when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">
+        </ng-pluralize>
+      </span>
       <a class="vote-btn cta" href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}">Vote</a>
     </div>
 

@@ -26,7 +26,8 @@ angular.module('bestInMelbourneApp')
         //  $scope.media = response;
         //});
 
-        Social.getMyLastName().then(function(response){
+        Social.getFBProfile().then(function(response){
+          $scope.fb = response;
           console.log(response);
         });
 
