@@ -1,126 +1,107 @@
 {
-  "burger" : [
-    {
-      "title": "Royale Brothers",
-      "votes": 13,
-      "website": {
-        "name": "royalebrothers.com.au/",
-        "link": "http://royalebrothers.com.au/"
-      },
-      "social": [
-        {
-          "channel": "instagram",
-          "name": "theroyalebros",
-          "link": "https://instagram.com/theroyalebros/",
-          "userId": "649901699"
-        }
-      ],
-      "venues": [
-        {
-          "address": "Rear 1 Church Street",
-          "suburb": "Brighton",
-          "state": "VIC",
-          "postcode": "3186"
-        }
-      ]
+  "burger" : [ {
+    "social" : [ {
+      "channel" : "instagram",
+      "link" : "https://instagram.com/theroyalebros/",
+      "name" : "theroyalebros",
+      "userId" : "649901699"
     },
-    {
-      "title": "The Grand Trailer Park Taverna",
-      "votes": 4,
-      "website": {
-        "name": "grandtrailerpark.com.au/",
-        "link": "http://www.grandtrailerpark.com.au/"
-      },
-      "social": [
-        {
-          "channel": "instagram",
-          "name": "grandtrailerpark",
-          "link": "https://instagram.com/grandtrailerpark/",
-          "userId": "1536176574"
-        }
-      ],
-      "venues": [
-        {
-          "address": "87 Bourke Street",
-          "suburb": "Melbourne",
-          "state": "VIC",
-          "postcode": "3000"
-        }
-      ]
-    },
-    {
-      "title": "Humburger",
-      "votes": 4,
-      "website": {
-        "name": "humburger.com.au/",
-        "link": "http://www.humburger.com.au/"
-      },
-      "social": [
-        {
-          "channel": "instagram",
-          "name": "humburgermelb",
-          "link": "https://instagram.com/humburgermelb/",
-          "userId": "731652740"
-        }
-      ],
-      "venues": [
-        {
-          "address": "789 Glenferrie Road",
-          "suburb": "Hawthorn",
-          "state": "VIC",
-          "postcode": "3122"
-        }
-      ]
-    },
-    {
-      "title": "Brother Burger and The Marvellous Brew",
-      "votes": 8,
-      "website": {
-        "name": "www.brotherburger.com.au/",
-        "link": "http://www.brotherburger.com.au/"
-      },
-      "social": [
-        {
-          "channel": "facebook",
-          "name": "Brother Burger and The Marvellous Brew",
-          "link": "http://www.facebook.com/brotherburger",
-          "userId": "172285316237538"
-        }
-      ],
-      "venues": [
-        {
-          "address": "413 Brunswick Street",
-          "suburb": "Fitzroy",
-          "state": "VIC",
-          "postcode": "3065"
-        }
-      ]
+      {
+        "channel" : "facebook",
+        "link" : "https://www.facebook.com/theroyalebros",
+        "name" : "Royale Brothers",
+        "userId" : "601028979956391"
+      }
+
+    ],
+    "title" : "Royale Brothers",
+    "venues" : [ {
+      "address" : "Rear 1 Church Street",
+      "postcode" : "3186",
+      "state" : "VIC",
+      "suburb" : "Brighton"
+    } ],
+    "votes" : 18,
+    "website" : {
+      "link" : "http://royalebrothers.com.au/",
+      "name" : "royalebrothers.com.au/"
     }
-  ],
-  "coffee" : [
-    {
-      "title": "Humburger",
-      "votes": 4,
-      "website": {
-        "name": "humburger.com.au/",
-        "link": "http://www.humburger.com.au/"
-      },
-      "social": [
-        {
-          "channel": "instagram",
-          "name": "humburgermelb",
-          "link": "https://instagram.com/humburgermelb/",
-          "userId": "731652740"
-        }
-      ],
-      "venues": [
-        {
-          "address": "789 Glenferrie Road",
-          "suburb": "Hawthorn",
-          "state": "VIC",
-          "postcode": "3122"
-        }
-      ]
+  }, {
+    "social" : [ {
+      "channel" : "instagram",
+      "link" : "https://instagram.com/grandtrailerpark/",
+      "name" : "grandtrailerpark",
+      "userId" : "1536176574"
+    } ],
+    "title" : "The Grand Trailer Park Taverna",
+    "venues" : [ {
+      "address" : "87 Bourke Street",
+      "postcode" : "3000",
+      "state" : "VIC",
+      "suburb" : "Melbourne"
+    } ],
+    "votes" : 4,
+    "website" : {
+      "link" : "http://www.grandtrailerpark.com.au/",
+      "name" : "grandtrailerpark.com.au/"
     }
-  ]
+  }, {
+    "social" : [ {
+      "channel" : "instagram",
+      "link" : "https://instagram.com/humburgermelb/",
+      "name" : "humburgermelb",
+      "userId" : "731652740"
+    } ],
+    "title" : "Humburger",
+    "venues" : [ {
+      "address" : "789 Glenferrie Road",
+      "postcode" : "3122",
+      "state" : "VIC",
+      "suburb" : "Hawthorn"
+    } ],
+    "votes" : 7,
+    "website" : {
+      "link" : "http://www.humburger.com.au/",
+      "name" : "humburger.com.au/"
+    }
+  }, {
+    "social" : [ {
+      "channel" : "facebook",
+      "link" : "http://www.facebook.com/brotherburger",
+      "name" : "Brother Burger and The Marvellous Brew",
+      "userId" : "172285316237538"
+    } ],
+    "title" : "Brother Burger and The Marvellous Brew",
+    "venues" : [ {
+      "address" : "413 Brunswick Street",
+      "postcode" : "3065",
+      "state" : "VIC",
+      "suburb" : "Fitzroy"
+    } ],
+    "votes" : 1,
+    "website" : {
+      "link" : "http://www.brotherburger.com.au/",
+      "name" : "brotherburger.com.au/"
+    }
+  } ],
+  "coffee" : [ {
+    "social" : [ {
+      "channel" : "instagram",
+      "link" : "https://instagram.com/humburgermelb/",
+      "name" : "humburgermelb",
+      "userId" : "731652740"
+    } ],
+    "title" : "Humburger coffee co",
+    "venues" : [ {
+      "address" : "789 Glenferrie Road",
+      "postcode" : "3122",
+      "state" : "VIC",
+      "suburb" : "Hawthorn"
+    } ],
+    "votes" : 4,
+    "website" : {
+      "link" : "http://www.humburger.com.au/",
+      "name" : "humburger.com.au/"
+    }
+  } ]
 }
