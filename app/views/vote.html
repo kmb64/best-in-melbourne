@@ -12,23 +12,24 @@
 
     <img class="cover-img" data-ng-src="{{fb.cover.source}}" alt="" />
 
-    <h3>{{place.title}}</h3>
+    <h3>{{place.title}} <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a></h3>
 
   </div>
-  <p>"{{fb.description}}"</p>
+  <p data-ng-if="fb.description" class="description">"{{fb.description}}"</p>
+  <p data-ng-if="fb.about" class="description">"{{fb.about}}"</p>
 
   <ul>
     <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
   </ul>
-  <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
-  <a data-ng-repeat="socialMedia in place.social | limitTo : 6"
-     target="_blank"
-     href="{{socialMedia.link}}">
-    <span class="socicon">x</span> {{socialMedia.name}}</a>
 
-  <!--<div class="flex-row profile-images">-->
-  <!--<a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}"><img src="{{m.images.thumbnail.url}}" alt=""/></a>-->
-  <!--</div>-->
+  <br>
+
+  <div class="flex-row profile-images">
+    <a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
+      <img src="{{m.images.thumbnail.url}}" alt=""/>
+      <span  class="socicon">x</span>
+    </a>
+  </div>
 
 </div>
 

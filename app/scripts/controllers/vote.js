@@ -22,15 +22,25 @@ angular.module('bestInMelbourneApp')
       place.$loaded(function(){
         place.$bindTo($scope, 'place');
 
-        //Social.getRecentMedia(place.social[0]).then(function(response){
-        //  $scope.media = response;
-        //});
-
-        Social.getFBProfile().then(function(response){
-          $scope.fb = response;
-          console.log(response);
+        var instagram = _.find(place.social, function(socialObj){
+          return socialObj.channel === 'instagram';
         });
 
+        if(instagram) {
+          Social.getRecentMedia(instagram).then(function(response){
+            $scope.media = response;
+          });
+        }
+
+        var facebook = _.find(place.social, function(socialObj){
+          return socialObj.channel === 'facebook';
+        });
+
+        if(facebook) {
+          Social.getFBProfile(facebook).then(function(response){
+            $scope.fb = response;
+          });
+        }
       });
 
       auth.$onAuth(function (authData) {

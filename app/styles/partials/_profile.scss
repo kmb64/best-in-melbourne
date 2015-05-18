@@ -17,14 +17,18 @@
   h3 {
     padding: 10px;
     position : absolute;
-    bottom : -8px;
-    left : 0px;
+    bottom : 0;
+    left : 0;
     background : rgba(0,0,0,0.8);
     color : white;
     border-radius : 2px;
     margin : 0;
     font-weight : normal;
     width: 100%;
+    a {
+      float : right;
+      color : white;
+    }
   }
 
   .cover-img {
@@ -35,12 +39,34 @@
   }
 }
 
+.description {
+  margin : 6px 0;
+}
+
 .profile-images {
-  margin: 0 auto;
+  margin : 6px 0;
+  a {
+    position : relative;
+    width : 25%;
+    margin : 2px 0;
+    span {
+      color : white;
+      background : rgba(0,0,0,0.8);
+      position : absolute;
+      border-radius : 2px;
+      bottom : 0;
+      right : 0;
+      padding : 3px;
+    }
+
+  }
   img {
-    width: 25%;
-    height: 25%;
-    max-width: 60px;
+    margin : 0 auto;
+    display : block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius : 2px;
+    max-width: 100%;
+    height: auto;
     max-height: 60px;
   }
 }
