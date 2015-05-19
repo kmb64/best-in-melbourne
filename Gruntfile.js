@@ -99,11 +99,15 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
-              connect.static('test'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
+              ),
+              connect().use(
+                '/.tmp/styles',
+                connect.static('./.tmp')
               ),
               connect.static(appConfig.app)
             ];
@@ -423,6 +427,34 @@ module.exports = function (grunt) {
           keepRunner: true
         }
       }
+    },
+
+    protractor: {
+      options: {
+        configFile: 'test/protractor.conf.js', // Target-specific config file
+        keepAlive: false, // If false, the grunt process stops when the test fails.
+        noColor: false // If true, protractor will not use colors in its output.
+      },
+      chrome: {
+        options: {
+          args: {
+            verbose: true,
+            browser: 'chrome',
+            directConnect: true,
+            params: '<%= data %>'
+          }
+        }
+      },
+      firefox: {
+        options: {
+          args: {
+            verbose: true,
+            browser: 'firefox',
+            directConnect: true,
+            params: '<%= data %>'
+          }
+        }
+      }
     }
   });
 
@@ -449,7 +481,9 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'jasmine'
+    'jasmine',
+    'connect:test',
+    'protractor:firefox'
   ]);
 
   grunt.registerTask('build', [

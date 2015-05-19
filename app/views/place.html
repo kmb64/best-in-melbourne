@@ -1,4 +1,4 @@
-<ul data-ng-if="places">
+<ul id="place-list" data-ng-if="places">
   <li class="animated fadeInUp card flex-row flex-nowrap" data-ng-repeat="place in places| orderBy:'-votes'">
 
     <div class="profile-picture">
@@ -8,7 +8,7 @@
     </div>
 
     <div class="profile-info">
-      <a href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}"><h3>{{place.title}}</h3></a>
+      <a href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}"><h3 class="place-title">{{place.title}}</h3></a>
       <ul>
         <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
       </ul>
