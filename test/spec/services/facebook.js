@@ -1,25 +1,27 @@
 'use strict';
 
-describe('Service: FacebookService', function () {
+describe('Facebook Service', function () {
 
   var mockWindow, fbCallback, mockDeferred;
 
   beforeEach(module('bestInMelbourneApp'));
 
-  beforeEach(function(){
+  beforeEach(function () {
 
     mockWindow = {
-      FB : {
-        api : function(path, params, callback){
+      FB: {
+        api: function (path, params, callback) {
           fbCallback = callback;
         }
       }
     };
 
     mockDeferred = {
-      reject : function(){},
-      resolve : function(){},
-      promise : {}
+      reject: function () {
+      },
+      resolve: function () {
+      },
+      promise: {}
     };
 
     module(function ($provide) {
@@ -27,23 +29,35 @@ describe('Service: FacebookService', function () {
     });
   });
 
-  it('should call the correct facebook api endpoint to retrieve a place\'s profile picture', inject(function(fb, $window){
+  it('should call the correct facebook api endpoint to retrieve a place\'s profile picture', inject(function (fb, $window) {
     spyOn($window.FB, 'api');
     fb.getProfilePicture('1234');
     expect($window.FB.api).toHaveBeenCalledWith('/1234/picture', jasmine.any(Object), jasmine.any(Function));
   }));
 
-  it('should reject the promise if facebook returns an error', inject(function(fb, $q){
+  it('should call the correct facebook api endpoint to retrieve a place\'s profile information', inject(function (fb, $window) {
+    spyOn($window.FB, 'api');
+    fb.getProfileInfo('6346');
+    expect($window.FB.api).toHaveBeenCalledWith('/6346', jasmine.any(Object), jasmine.any(Function));
+  }));
+
+  it('should call the facebook api with the correct parameters', inject(function (fb, $window) {
+    spyOn($window.FB, 'api');
+    fb.getProfilePicture('6346', {param : 'param1'});
+    expect($window.FB.api).toHaveBeenCalledWith(jasmine.any(String), {param : 'param1'}, jasmine.any(Function));
+  }));
+
+  it('should reject the promise if facebook returns an error', inject(function (fb, $q) {
     spyOn($q, 'defer').and.returnValue(mockDeferred);
     spyOn(mockDeferred, 'reject');
 
     fb.getProfilePicture();
-    fbCallback({error : true});
+    fbCallback({error: true});
 
     expect(mockDeferred.reject).toHaveBeenCalled();
   }));
 
-  it('should reject the promise if facebook returns a falsy response', inject(function(fb, $q){
+  it('should reject the promise if facebook returns a falsy response', inject(function (fb, $q) {
     spyOn($q, 'defer').and.returnValue(mockDeferred);
     spyOn(mockDeferred, 'reject');
 
@@ -53,7 +67,7 @@ describe('Service: FacebookService', function () {
     expect(mockDeferred.reject).toHaveBeenCalled();
   }));
 
-  it('should resolve the promise if facebook returns a successful response', inject(function(fb, $q){
+  it('should resolve the promise if facebook returns a successful response', inject(function (fb, $q) {
     spyOn($q, 'defer').and.returnValue(mockDeferred);
     spyOn(mockDeferred, 'resolve');
 
@@ -63,5 +77,10 @@ describe('Service: FacebookService', function () {
     expect(mockDeferred.resolve).toHaveBeenCalledWith('success');
   }));
 
+  it('should return a promise', inject(function (fb, $q) {
+    spyOn($q, 'defer').and.returnValue(mockDeferred);
+    var promise = fb.getProfileInfo();
+    expect(promise).toBe(mockDeferred.promise);
+  }));
 
 });
