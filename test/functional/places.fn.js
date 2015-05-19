@@ -1,6 +1,6 @@
 'use strict';
 
-describe('delivery address', function () {
+describe('Place list', function () {
   var page = require('./place.page.js');
 
   beforeEach(function () {
