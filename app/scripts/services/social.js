@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bestInMelbourneApp')
-  .service('Social', ['config', '$http', '$q', function (config, $http, $q) {
+  .service('Social', ['config', '$http', '$q', 'instagram', function (config, $http, $q, instagram) {
 
     var getProfilePicture = function(social) {
 
@@ -42,9 +42,19 @@ angular.module('bestInMelbourneApp')
 
     };
 
+    var assignProfilePictures = function (places) {
+      angular.forEach(places, function(place){
+        instagram.getProfilePicture(place.social[0]).then(function(response){
+          place.profilePicture = response;
+        });
+
+      });
+    };
+
     return {
       getProfilePicture : getProfilePicture,
       getRecentMedia : getRecentMedia,
+      assignProfilePictures : assignProfilePictures,
       getFBProfile: function(facebook) {
         var deferred = $q.defer();
         FB.api('/' + facebook.userId, {

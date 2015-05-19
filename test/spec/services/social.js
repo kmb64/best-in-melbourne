@@ -2,7 +2,7 @@
 
 describe('Service: SocialService', function () {
 
-  var mockSocial, mockConfig, mockHttp, mockPromise, successCallback;
+  var mockSocial, mockConfig, mockHttp, mockPromise, successCallback, mockInstagram;
 
   beforeEach(module('bestInMelbourneApp'));
 
@@ -32,16 +32,38 @@ describe('Service: SocialService', function () {
     };
 
     mockPromise = {
-      then : function(successCallback){
-        successCallback();
+      then : function(success){
+        successCallback = success;
       }
+    };
+
+    mockInstagram = {
+      getProfilePicture : function(){}
     };
 
     module(function ($provide) {
       $provide.constant('config', mockConfig);
+      $provide.constant('instagram', mockInstagram);
     });
 
   });
+
+  it('should take a list of places and assign the appropriate profile pictures', inject(function(Social, instagram){
+    var places = [
+      {social : [{channel : 'instagram'}]}
+    ];
+
+    spyOn(instagram, 'getProfilePicture').and.returnValue(mockPromise);
+    Social.assignProfilePictures(places);
+    successCallback('profile_picture.jpeg');
+    expect(places[0].profilePicture).toBe('profile_picture.jpeg');
+  }));
+
+  //it('should not assign an instagram profile picture if the place has no instagram account', inject(function(Social, instagram){
+  //  spyOn(instagram, 'getProfilePicture');
+  //  Social.assignProfilePictures({channel : 'notinstagram'}, );
+  //  expect(instagram.getProfilePicture).not.toHaveBeenCalled();
+  //}));
 
   it('should call a the instagram api to get a profile picture link', inject(function(Social, config, $http, $httpBackend, $rootScope){
     var resolvedValue;
