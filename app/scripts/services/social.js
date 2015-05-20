@@ -45,21 +45,29 @@ angular.module('bestInMelbourneApp')
     };
 
     social.assignProfilePicture = function(socialAccList){
-      //angular.forEach(socialAccList, function(socialAcc){
-      //  if(socialAcc.channel === 'instagram') {
-      //    return instagram.getProfilePicture(socialAcc.userId);
-      //  }
-      //
-      //});
-      return instagram.getProfilePicture();
+      angular.forEach(socialAccList, function(socialAcc){
+        var promise = false;
+        if(socialAcc.channel === 'instagram') {
+          promise = instagram.getProfilePicture(socialAcc.userId);
+        } else if (socialAcc.channel === 'facebook') {
+          promise = fb.getProfilePicture(socialAcc.userId);
+        }
+        return promise;
+      });
     };
 
     social.assignProfilePictures = function (places) {
       angular.forEach(places, function(place){
-        console.log(place);
-        social.assignProfilePicture(place.social).then(function(response){
-          place.profilePicture = response;
-        });
+        var promise = social.assignProfilePicture(place.social);
+        if(promise) {
+          promise.then(function (response) {
+            place.profilePicture = response;
+          }, function(){
+            place.profilePicture = 'default image link?';
+          });
+        } else {
+          place.profilePicture = 'default image link?';
+        }
       });
     };
 
