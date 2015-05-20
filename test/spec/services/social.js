@@ -53,10 +53,37 @@ describe('Service: SocialService', function () {
       {social : [{channel : 'instagram'}]}
     ];
 
-    spyOn(instagram, 'getProfilePicture').and.returnValue(mockPromise);
+    spyOn(Social, 'assignProfilePicture').and.returnValue(mockPromise);
     Social.assignProfilePictures(places);
     successCallback('profile_picture.jpeg');
     expect(places[0].profilePicture).toBe('profile_picture.jpeg');
+  }));
+
+  it('should first look for an instagram account to get a profile picture', inject(function(Social, instagram){
+    var places = [
+      {social : [
+        {channel : 'facebook'},
+        {channel : 'instagram'}
+      ]}
+    ];
+
+    spyOn(instagram, 'getProfilePicture').and.returnValue(mockPromise);
+    Social.assignProfilePictures(places);
+    expect(instagram.getProfilePicture).toHaveBeenCalled();
+
+  }));
+
+  xit('should look to get a facebook account profile picture if a place has no instagram', inject(function(Social, instagram, fb){
+    var places = [
+      {social : [
+        {channel : 'facebook'}
+      ]}
+    ];
+
+    spyOn().and.returnValue(mockPromise);
+    Social.assignProfilePictures(places);
+    expect(fb.getProfilePicture).toHaveBeenCalled();
+
   }));
 
   //it('should not assign an instagram profile picture if the place has no instagram account', inject(function(Social, instagram){

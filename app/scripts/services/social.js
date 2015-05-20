@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('bestInMelbourneApp')
-  .service('Social', ['config', '$http', '$q', 'instagram', function (config, $http, $q, instagram) {
+  .service('Social', ['config', '$http', '$q', 'instagram', 'fb', function (config, $http, $q, instagram, fb) {
 
-    var getProfilePicture = function(social) {
+    var social = {};
+
+    social.getProfilePicture = function(social) {
 
       var deferred = $q.defer();
 
@@ -22,7 +24,7 @@ angular.module('bestInMelbourneApp')
       return deferred.promise;
     };
 
-    var getRecentMedia = function(social){
+    social.getRecentMedia = function(social){
 
       var deferred = $q.defer();
 
@@ -42,32 +44,39 @@ angular.module('bestInMelbourneApp')
 
     };
 
-    var assignProfilePictures = function (places) {
+    social.assignProfilePicture = function(socialAccList){
+      //angular.forEach(socialAccList, function(socialAcc){
+      //  if(socialAcc.channel === 'instagram') {
+      //    return instagram.getProfilePicture(socialAcc.userId);
+      //  }
+      //
+      //});
+      return instagram.getProfilePicture();
+    };
+
+    social.assignProfilePictures = function (places) {
       angular.forEach(places, function(place){
-        instagram.getProfilePicture(place.social[0]).then(function(response){
+        console.log(place);
+        social.assignProfilePicture(place.social).then(function(response){
           place.profilePicture = response;
         });
-
       });
     };
 
-    return {
-      getProfilePicture : getProfilePicture,
-      getRecentMedia : getRecentMedia,
-      assignProfilePictures : assignProfilePictures,
-      getFBProfile: function(facebook) {
-        var deferred = $q.defer();
-        FB.api('/' + facebook.userId, {
+    social.getFBProfile = function(facebook) {
+      var deferred = $q.defer();
+      FB.api('/' + facebook.userId, {
 
-        }, function(response) {
-          if (!response || response.error) {
-            deferred.reject('Error occured');
-          } else {
-            deferred.resolve(response);
-          }
-        });
-        return deferred.promise;
-      }
+      }, function(response) {
+        if (!response || response.error) {
+          deferred.reject('Error occured');
+        } else {
+          deferred.resolve(response);
+        }
+      });
+      return deferred.promise;
     };
+
+    return social;
 
   }]);
