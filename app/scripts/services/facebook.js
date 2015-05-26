@@ -7,7 +7,7 @@ angular.module('bestInMelbourneApp')
 
     var _facebookCallback = function (response, deferred) {
       if (!response || response.error) {
-        deferred.reject();
+        deferred.reject(false);
       } else {
         deferred.resolve(response);
       }

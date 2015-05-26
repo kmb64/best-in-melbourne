@@ -6,6 +6,8 @@ angular.module('bestInMelbourneApp')
   .constant('config', {
 
     firebase : 'https://vivid-inferno-5850.firebaseio.com/',
+    instagram : 'https://api.instagram.com/v1/users/',
+    instagramClientId : instagramClientId,
 
     recentMedia : {
       instagram : function(userId) {
