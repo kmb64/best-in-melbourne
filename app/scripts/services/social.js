@@ -5,7 +5,7 @@ angular.module('bestInMelbourneApp')
 
     var social = {};
 
-    social.getProfilePicture = function(social) {
+    social.getProfilePicture = function (social) {
 
       var deferred = $q.defer();
 
@@ -15,16 +15,16 @@ angular.module('bestInMelbourneApp')
 
       params.callback = 'JSON_CALLBACK';
 
-      $http.jsonp(url, {params: params}).then(function(response){
+      $http.jsonp(url, {params: params}).then(function (response) {
         deferred.resolve(response.data.data[mediaSource.accessor]);
-      },function(){
+      }, function () {
         deferred.resolve('default image link?');
       });
 
       return deferred.promise;
     };
 
-    social.getRecentMedia = function(social){
+    social.getRecentMedia = function (social) {
 
       var deferred = $q.defer();
 
@@ -34,9 +34,9 @@ angular.module('bestInMelbourneApp')
 
       params.callback = 'JSON_CALLBACK';
 
-      $http.jsonp(url, {params: params}).then(function(response){
+      $http.jsonp(url, {params: params}).then(function (response) {
         deferred.resolve(response.data.data);
-      },function(){
+      }, function () {
         deferred.resolve('default image link?');
       });
 
@@ -44,10 +44,10 @@ angular.module('bestInMelbourneApp')
 
     };
 
-    social.assignProfilePicture = function(socialAccList){
-      angular.forEach(socialAccList, function(socialAcc){
+    social.assignProfilePicture = function (socialAccList) {
+      angular.forEach(socialAccList, function (socialAcc) {
         var promise = false;
-        if(socialAcc.channel === 'instagram') {
+        if (socialAcc.channel === 'instagram') {
           promise = instagram.getProfilePicture(socialAcc.userId);
         } else if (socialAcc.channel === 'facebook') {
           promise = fb.getProfilePicture(socialAcc.userId);
@@ -57,12 +57,12 @@ angular.module('bestInMelbourneApp')
     };
 
     social.assignProfilePictures = function (places) {
-      angular.forEach(places, function(place){
+      angular.forEach(places, function (place) {
         var promise = social.assignProfilePicture(place.social);
-        if(promise) {
+        if (promise) {
           promise.then(function (response) {
             place.profilePicture = response;
-          }, function(){
+          }, function () {
             place.profilePicture = 'default image link?';
           });
         } else {
@@ -71,11 +71,9 @@ angular.module('bestInMelbourneApp')
       });
     };
 
-    social.getFBProfile = function(facebook) {
+    social.getFBProfile = function (facebook) {
       var deferred = $q.defer();
-      FB.api('/' + facebook.userId, {
-
-      }, function(response) {
+      FB.api('/' + facebook.userId, {}, function (response) {
         if (!response || response.error) {
           deferred.reject('Error occured');
         } else {
