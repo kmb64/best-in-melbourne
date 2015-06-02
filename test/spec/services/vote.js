@@ -2,27 +2,28 @@
 
 describe('Service: VoteService', function () {
 
-  var mockWindow;
+  var mockUserAccount;
 
   beforeEach(module('bestInMelbourneApp'));
 
   beforeEach(function(){
 
-    //mockFirebaseArray = function(){
-    //  return {
-    //    $loaded : function(){
-    //
-    //    }
-    //  }
-    //};
+    mockUserAccount = {
+      favourites : {
+        melbourne : {
+          burger : [
+            '0'
+          ]
+        },
+        auckland : {
 
-    mockWindow = {
-      Firebase : function(){}
+        }
+      }
     };
 
-    module(function ($provide) {
-      $provide.constant('$window', mockWindow);
-    });
+    //module(function ($provide) {
+    //  $provide.constant('$window', mockWindow);
+    //});
 
     //need user id, place id --> website or facebook id?? place type
 
@@ -34,11 +35,14 @@ describe('Service: VoteService', function () {
 
   });
 
-  it('should check if a user has voted for a particular place before', inject(function (vote, $window) {
-    spyOn($window.Firebase);
-    vote.hasUserVotedForPlace('useId1234', 'placeId1234', 'burgerPlaceType');
-    expect($firebaseArray.toHaveBeenCalledWith)
+  it('should know if a user has voted for a particular place before', inject(function (vote) {
+    var votedBefore = vote.hasUserVotedForPlace(mockUserAccount, 'melbourne', 'burger', '0');
+    expect(votedBefore).toBeTruthy();
+  }));
 
+  it('should know if a user hasn\'t voted for a particular place before', inject(function (vote) {
+    var votedBefore = vote.hasUserVotedForPlace(mockUserAccount, 'auckland', 'burger', '0');
+    expect(votedBefore).toBeFalsy();
   }));
 
 });
