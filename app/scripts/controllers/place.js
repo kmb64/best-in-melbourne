@@ -9,8 +9,8 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('PlaceCtrl', ['$scope', '$firebaseArray', 'Vote', 'Social', 'config', '$routeParams',
-    function ($scope, $firebaseArray, Vote, Social, config, $routeParams) {
+  .controller('PlaceCtrl', ['$scope', '$firebaseArray', 'Social', 'config', '$routeParams',
+    function ($scope, $firebaseArray, Social, config, $routeParams) {
 
       var ref = new Firebase(config.firebase + $routeParams.type);
       $scope.$parent.placeType = $routeParams.type;
