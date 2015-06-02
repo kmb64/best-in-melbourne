@@ -456,7 +456,7 @@ module.exports = function (grunt) {
       'sass',
       'wiredep',
       'concurrent:server',
-      'autoprefixer:server',
+      //'autoprefixer:server',
       'connect:livereload',
       'watch'
     ]);
@@ -482,7 +482,7 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'sass',
     'copy:dist',
-    'autoprefixer',
+    //'autoprefixer',Disable untill dependencies resolved
     'cdnify',
     'cssmin',
     'uglify',
