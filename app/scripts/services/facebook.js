@@ -5,6 +5,8 @@ angular.module('bestInMelbourneApp')
 
     var fb = {};
 
+    var profilePicParams = {redirect : false ,width :150};
+
     var _facebookCallback = function (response, deferred) {
       if (!response || response.error) {
         deferred.reject(false);
@@ -26,9 +28,9 @@ angular.module('bestInMelbourneApp')
       return _facebookApi('/' + id, params);
     };
 
-    fb.getProfilePicture = function (id, params) {
+    fb.getProfilePicture = function (id) {
       var deferred = $q.defer();
-      _facebookApi('/' + id + '/picture', params).then(function(response){
+      _facebookApi('/' + id + '/picture', profilePicParams).then(function(response){
         deferred.resolve(response.data.url);
       }, function(){
         deferred.resolve('default image link?');

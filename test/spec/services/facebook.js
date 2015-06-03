@@ -48,12 +48,6 @@ describe('Facebook Service', function () {
     expect($window.FB.api).toHaveBeenCalledWith('/6346', jasmine.any(Object), jasmine.any(Function));
   }));
 
-  it('should call the facebook api with the correct parameters', inject(function (fb, $window) {
-    spyOn($window.FB, 'api');
-    fb.getProfilePicture('6346', {param : 'param1'});
-    expect($window.FB.api).toHaveBeenCalledWith(jasmine.any(String), {param : 'param1'}, jasmine.any(Function));
-  }));
-
   it('should reject the promise if facebook returns an error', inject(function (fb, $q) {
     spyOn($q, 'defer').and.returnValue(mockDeferred);
     spyOn(mockDeferred, 'reject');
