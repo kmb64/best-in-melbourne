@@ -53,15 +53,7 @@ angular.module('bestInMelbourneApp')
     };
 
     social.getFBProfile = function (facebook) {
-      var deferred = $q.defer();
-      FB.api('/' + facebook.userId, {}, function (response) {
-        if (!response || response.error) {
-          deferred.reject('Error occured');
-        } else {
-          deferred.resolve(response);
-        }
-      });
-      return deferred.promise;
+      return fb.getProfileInfo(facebook.userId);
     };
 
     return social;
