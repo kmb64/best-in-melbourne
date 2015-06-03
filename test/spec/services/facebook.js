@@ -2,7 +2,7 @@
 
 describe('Facebook Service', function () {
 
-  var mockWindow, fbCallback, mockDeferred;
+  var mockWindow, fbCallback, mockDeferred, mockPromise, successCallback, failCallback;
 
   beforeEach(module('bestInMelbourneApp'));
 
@@ -16,12 +16,19 @@ describe('Facebook Service', function () {
       }
     };
 
+    mockPromise = {
+      then : function(success, fail) {
+        successCallback = success;
+        failCallback = fail;
+      }
+    };
+
     mockDeferred = {
       reject: function () {
       },
       resolve: function () {
       },
-      promise: {}
+      promise: mockPromise
     };
 
     module(function ($provide) {

@@ -27,7 +27,14 @@ angular.module('bestInMelbourneApp')
     };
 
     fb.getProfilePicture = function (id, params) {
-      return _facebookApi('/' + id + '/picture', params);
+      var deferred = $q.defer();
+      _facebookApi('/' + id + '/picture', params).then(function(response){
+        deferred.resolve(response.data.url);
+      }, function(){
+        deferred.resolve('default image link?');
+      });
+
+      return deferred.promise;
     };
 
     return fb;
