@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: BurgerCtrl', function () {
+describe('Controller: PlaceCtrl', function () {
 
   // load the controller's module
   beforeEach(module('bestInMelbourneApp'));
@@ -22,7 +22,7 @@ describe('Controller: BurgerCtrl', function () {
     };
 
     mockSocialService = {
-      getProfilePicture : function(){
+      assignProfilePictures : function(){
         return {then:function(){}};
       }
     };

@@ -44,16 +44,16 @@ angular.module('bestInMelbourneApp')
 
     };
 
-    social.assignProfilePicture = function (socialAccList) {
-      angular.forEach(socialAccList, function (socialAcc) {
-        var promise = false;
-        if (socialAcc.channel === 'instagram') {
+    social.assignProfilePicture = function(socialAccList) {
+      var promise = false;
+      angular.forEach(socialAccList, function(socialAcc){
+        if(socialAcc.channel === 'instagram') {
           promise = instagram.getProfilePicture(socialAcc.userId);
         } else if (socialAcc.channel === 'facebook') {
           promise = fb.getProfilePicture(socialAcc.userId);
         }
-        return promise;
       });
+      return promise;
     };
 
     social.assignProfilePictures = function (places) {
