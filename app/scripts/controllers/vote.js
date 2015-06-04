@@ -44,6 +44,7 @@ angular.module('bestInMelbourneApp')
       });
 
       auth.$onAuth(function (authData) {
+        console.log(authData);
         $scope.authorized = authData;
       });
 
