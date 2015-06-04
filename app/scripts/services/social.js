@@ -5,24 +5,8 @@ angular.module('bestInMelbourneApp')
 
     var social = {};
 
-    social.getRecentMedia = function (social) {
-
-      var deferred = $q.defer();
-
-      var mediaSource = config.recentMedia[social.channel](social.userId),
-        url = mediaSource.endPoint,
-        params = mediaSource.params;
-
-      params.callback = 'JSON_CALLBACK';
-
-      $http.jsonp(url, {params: params}).then(function (response) {
-        deferred.resolve(response.data.data);
-      }, function () {
-        deferred.resolve('default image link?');
-      });
-
-      return deferred.promise;
-
+    social.getRecentMedia = function (instagramAcc) {
+      return instagram.getRecentMedia(instagramAcc.userId);
     };
 
     social.assignProfilePicture = function(socialAccList) {
@@ -44,10 +28,10 @@ angular.module('bestInMelbourneApp')
           promise.then(function (response) {
             place.profilePicture = response;
           }, function () {
-            place.profilePicture = 'default image link?';
+            place.profilePicture = config.defaultProfilePicture;
           });
         } else {
-          place.profilePicture = 'default image link?';
+          place.profilePicture = config.defaultProfilePicture;
         }
       });
     };

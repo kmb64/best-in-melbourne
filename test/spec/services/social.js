@@ -23,6 +23,7 @@ describe('Service: SocialService', function () {
     };
 
     mockConfig = {
+      defaultProfilePicture : 'default image link?',
       profilePicture : {
         instagram : function(){
           return {

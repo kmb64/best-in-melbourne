@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bestInMelbourneApp')
-  .factory('fb', ['$window', '$q', function ($window, $q) {
+  .factory('fb', ['$window', '$q', 'config', function ($window, $q, config) {
 
     var fb = {};
 
@@ -33,7 +33,7 @@ angular.module('bestInMelbourneApp')
       _facebookApi('/' + id + '/picture', profilePicParams).then(function(response){
         deferred.resolve(response.data.url);
       }, function(){
-        deferred.resolve('default image link?');
+        deferred.resolve(config.defaultProfilePicture);
       });
 
       return deferred.promise;

@@ -16,11 +16,22 @@ angular.module('bestInMelbourneApp')
       $http.jsonp(config.instagram + id, {params: params}).then(function(response){
         deferred.resolve(response.data.data.profile_picture);
       }, function(){
-        deferred.resolve('default image link?')
+        deferred.resolve(config.defaultProfilePicture);
       });
 
       return deferred.promise;
+    };
 
+    instagram.getRecentMedia = function(id) {
+      var deferred = $q.defer();
+
+      $http.jsonp(config.instagram + id + '/media/recent/', {params: params}).then(function(response){
+        deferred.resolve(response.data.data);
+      }, function(){
+        deferred.resolve(false);
+      });
+
+      return deferred.promise;
     };
 
     return instagram;
