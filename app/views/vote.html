@@ -25,7 +25,7 @@
   <br>
 
   <div class="flex-row profile-images">
-    <a data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
+    <a target="_blank" data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
       <img src="{{m.images.thumbnail.url}}" alt=""/>
       <span  class="socicon">x</span>
     </a>
