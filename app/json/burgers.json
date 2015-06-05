@@ -103,5 +103,16 @@
       "link" : "http://www.humburger.com.au/",
       "name" : "humburger.com.au/"
     }
-  } ]
+  } ],
+
+  "userAccounts" : {
+    "1234" : {
+      "favourites" : {
+        "burger" : [
+          "0"
+        ]
+      }
+
+    }
+  }
 }

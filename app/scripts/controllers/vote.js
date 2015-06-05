@@ -10,8 +10,8 @@
  * Controller of the bestInMelbourneApp
  */
 angular.module('bestInMelbourneApp')
-  .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth',
-    function ($scope, $firebaseObject, config, $routeParams, Social, Auth) {
+  .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth', 'userAccount',
+    function ($scope, $firebaseObject, config, $routeParams, Social, Auth, userAccount) {
 
       var ref = new Firebase(config.firebase + $routeParams.type + '/' + $routeParams.place);
       var place = $firebaseObject(ref);
@@ -41,6 +41,12 @@ angular.module('bestInMelbourneApp')
             $scope.fb = response;
           });
         }
+
+        userAccount.getAccount('1234').$loaded(function(response){
+          console.log('get account loaded');
+          console.log(response);
+        });
+
       });
 
       auth.$onAuth(function (authData) {
