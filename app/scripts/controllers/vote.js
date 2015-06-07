@@ -42,7 +42,7 @@ angular.module('bestInMelbourneApp')
           });
         }
 
-        userAccount.getAccount('1234').$loaded(function(response){
+        userAccount.getAccount('1234').then(function(response){
           console.log('get account loaded');
           console.log(response);
         });
