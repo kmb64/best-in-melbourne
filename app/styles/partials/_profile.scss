@@ -8,10 +8,10 @@
     top : 0;
     padding : 8px 10px 8px 10px;
     background : #252527;
-    color : #a668fe;
+    color : $purple;
     border-radius : 6px;
     font-size : 14px;
-    border : 2px solid #a668fe;
+    border : 2px solid $purple;
   }
 
   h3 {
@@ -20,14 +20,14 @@
     bottom : 0;
     left : 0;
     background : rgba(0,0,0,0.8);
-    color : white;
+    color : $white;
     border-radius : 2px;
     margin : 0;
     font-weight : normal;
     width: 100%;
     a {
       float : right;
-      color : white;
+      color : $white;
     }
   }
 
@@ -50,8 +50,8 @@
     width : 25%;
     margin : 2px 0;
     span {
-      color : white;
-      background : rgba(0,0,0,0.8);
+      color : $white;
+      background : $lightCharcoal;
       position : absolute;
       border-radius : 2px;
       bottom : 0;
@@ -63,7 +63,7 @@
   img {
     margin : 0 auto;
     display : block;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: $boxShadow;
     border-radius : 2px;
     max-width: 100%;
     height: auto;
