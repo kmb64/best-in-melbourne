@@ -15,8 +15,8 @@
     <h3>{{place.title}} <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a></h3>
 
   </div>
-  <p data-ng-if="fb.description" class="description">"{{fb.description}}"</p>
-  <p data-ng-if="fb.about" class="description">"{{fb.about}}"</p>
+  <p data-ng-if="fb.description" class="description">{{fb.description}}</p>
+  <p data-ng-if="fb.about" class="description">{{fb.about}}</p>
 
   <ul>
     <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
@@ -24,7 +24,7 @@
 
   <br>
 
-  <div class="flex-row profile-images">
+  <div class="profile-images">
     <a target="_blank" data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
       <img data-ng-src="{{m.images.thumbnail.url}}" alt=""/>
       <span  class="socicon">x</span>

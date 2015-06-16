@@ -7,7 +7,7 @@
     right :0px;
     top : 0;
     padding : 8px 10px 8px 10px;
-    background : #252527;
+    background : $headerBackground;
     color : $purple;
     border-radius : 6px;
     font-size : 14px;
@@ -46,10 +46,12 @@
 .profile-images {
   margin : 6px 0;
   a {
+    display : inline-block;
     position : relative;
     width : 25%;
     margin : 2px 0;
     span {
+      display : inline-block;
       color : $white;
       background : $lightCharcoal;
       position : absolute;

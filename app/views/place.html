@@ -1,5 +1,5 @@
 <ul id="place-list" data-ng-if="places">
-  <li class="animated fadeInUp card flex-row flex-nowrap" data-ng-repeat="place in places| orderBy:'-votes'">
+  <li class="animated fadeInUp card" data-ng-repeat="place in places| orderBy:'-votes'">
 
     <div class="profile-picture">
       <a href="{{'/melbourne/' + placeType + '/vote/' + place.$id}}">
