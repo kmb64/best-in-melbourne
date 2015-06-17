@@ -21,7 +21,7 @@ angular
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
-      .when('/melbourne/:type', {
+      .when('/:city/:type', {
         templateUrl: 'views/place.html',
         controller: 'PlaceCtrl'
       })
@@ -29,12 +29,12 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/melbourne/:type/vote/:place', {
+      .when('/:city/:type/vote/:place', {
         templateUrl: 'views/vote.html',
         controller: 'VoteCtrl'
       })
       .otherwise({
-        redirectTo: '/melbourne/burger'
+        redirectTo: '/melbourne/burger'//Default to melbourne's burger places :)
       });
   }).run(['$window', function($window){
 
