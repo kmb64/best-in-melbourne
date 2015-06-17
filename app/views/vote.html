@@ -31,6 +31,8 @@
     </a>
   </div>
 
+  <p>Voted : {{voted}}</p>
+
 </div>
 
 <div class="card" data-ng-if="!authorized">
@@ -39,6 +41,6 @@
 </div>
 
 <div class="card" data-ng-if="authorized">
-  <a class="big cta" data-ng-click="place.votes = place.votes + 1">Confirm your vote</a>
+  <a class="big cta" data-ng-if="!voted" data-ng-click="place.votes = place.votes + 1">Confirm your vote</a>
   <a class="big cta" data-ng-click="logOut()">Log out</a>
 </div>

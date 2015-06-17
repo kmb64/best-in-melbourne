@@ -8,6 +8,9 @@ angular.module('bestInMelbourneApp')
     var _hasUserVotedForPlace = function (userAccount, city, placeType, placeId) {
       var voted;
       try {
+        console.log(city);
+        console.log(placeType);
+        console.log(placeId);
         voted = userAccount['favourites'][city][placeType][placeId];
       }
       catch (e) {
@@ -26,5 +29,6 @@ angular.module('bestInMelbourneApp')
       }
       return confirmationMessage;
     };
+    voteService.hasUserVoted = _hasUserVotedForPlace;
     return voteService;
   }]);

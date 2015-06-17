@@ -110,9 +110,11 @@
   "userAccounts" : {
     "1234" : {
       "favourites" : {
-        "burger" : [
-          "0"
-        ]
+        "melbourne" : {
+          "burger" : [
+            "0"
+          ]
+        }
       }
 
     }
