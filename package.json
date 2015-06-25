@@ -32,7 +32,11 @@
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0",
-    "grunt-template-jasmine-istanbul": "~0.3.3"
+    "grunt-template-jasmine-istanbul": "~0.3.3",
+    "grunt-extend-config": "0.x",
+    "phantomjs": "~1.8.2-0",
+    "protractor": "~1.7.0",
+    "requirejs": "^2.1.16"
   },
   "engines": {
     "node": ">=0.10.0"
