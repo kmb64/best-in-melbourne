@@ -17,8 +17,8 @@ module.exports = function (grunt) {
     copy : {
       fonts: {
         expand: true,
-        cwd: 'node_modules/mypost-consumer-styles/fonts',
-        dest: '<%= mcac.tmp.base %>/styles/fonts',
+        cwd: '<%= mcac.app.base %>/styles/fonts/',
+        dest: '<%= mcac.tmp.base %>/styles/fonts/',
         src: '*'
       }
     },

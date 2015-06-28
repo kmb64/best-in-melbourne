@@ -2,23 +2,60 @@
 
 module.exports = function (grunt) {
 
+  var modRewrite = require('connect-modrewrite');
+
   grunt.extendConfig({
 
     connect: {
-      dev: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        //hostname: 'localhost',
+        hostname: '*',
+        livereload: 35729
+      },
+      livereload: {
         options: {
-          port: 9000,
-          hostname: '*',
-          livereload: 35729,
-          base: ['<%= mcac.tmp.base %>'],
-          open: 'http://localhost:<%= connect.dev.options.port %>/index.html'
+          open: true,
+          middleware: function (connect) {
+            return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect().use(
+                '/.tmp/styles',
+                connect.static('./.tmp')
+              )
+            ];
+          }
         }
       },
       test: {
         options: {
           port: 9001,
-          hostname: '*',
-          base: ['<%= mcac.tmp.base %>']
+          middleware: function (connect) {
+            return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect().use(
+                '/.tmp/styles',
+                connect.static('./.tmp')
+              )
+            ];
+          }
+        }
+      },
+      dist: {
+        options: {
+          open: true,
+          base: '<%= yeoman.dist %>'
         }
       }
     },

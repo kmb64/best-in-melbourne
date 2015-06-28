@@ -17,15 +17,15 @@ module.exports = function (grunt) {
     copy : {
       js: {
         files: {
-          '<%= mcac.tmp.base %>/scripts/angular.js': [
-            'node_modules/angular/angular.js'
-          ],
-          '<%= mcac.tmp.base %>/scripts/angular-messages.js': [
-            'node_modules/angular-messages/angular-messages.js'
-          ],
-          '<%= mcac.tmp.base %>/scripts/testFormController.js': [
-            '<%= mcac.app.base %>/scripts/testFormController.js'
-          ]
+          //'<%= mcac.tmp.base %>/scripts/angular.js': [
+          //  'node_modules/angular/angular.js'
+          //],
+          //'<%= mcac.tmp.base %>/scripts/angular-messages.js': [
+          //  'node_modules/angular-messages/angular-messages.js'
+          //],
+          //'<%= mcac.tmp.base %>/scripts/testFormController.js': [
+          //  '<%= mcac.app.base %>/scripts/testFormController.js'
+          //]
         }
       }
     },
@@ -40,7 +40,6 @@ module.exports = function (grunt) {
           'Gruntfile.js',
           '<%= mcac.app.base %>/app.js',
           '<%= mcac.app.base %>/scripts/*.js',
-          '!<%= mcac.app.base %>/scripts/qasAutoComplete.js',//Library file.
           '<%= mcac.test.base %>/specs/*.js'
         ]
       }
@@ -55,11 +54,10 @@ module.exports = function (grunt) {
       },
       js: {
         files: {
-          '<%= mcac.tmp.base %>/scripts/address-completion.js': [
+          '<%= mcac.tmp.base %>/scripts/app.js': [
             '<%= mcac.app.base %>/app.js',
-            '<%= mcac.app.base %>/scripts/*.js',
-            //This script is to aid local dev only.
-            '!<%= mcac.app.base %>/scripts/testFormController.js'
+            '<%= mcac.app.base %>/config.js',
+            '<%= mcac.app.base %>/scripts/{,*/}*.js'
           ]
         }
       }

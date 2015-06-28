@@ -56,8 +56,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', 'Run during development to immediately see changes.', [
     'build',
-    'express:stub',
-    'connect:dev',
+    'connect:livereload',
     'watch'
   ]);
 
