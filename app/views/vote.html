@@ -30,37 +30,16 @@
       </span>
   </div>
 
-  <!--<div class="cover-image-container">-->
-    <!--<span class="votes">-->
-      <!--<ng-pluralize-->
-        <!--count="place.votes"-->
-        <!--when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">-->
-      <!--</ng-pluralize>-->
-    <!--</span>-->
-
-    <!--<img class="cover-img" data-ng-src="{{fb.cover.source}}" alt="" />-->
-
-    <!--<h3>{{place.title}} <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a></h3>-->
-
-  <!--</div>-->
-  <!--<p data-ng-if="fb.description" class="description">{{fb.description}}</p>-->
-  <!--<p data-ng-if="fb.about" class="description">{{fb.about}}</p>-->
-
   <ul>
     <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
   </ul>
 
-  <br>
-
-  <div data-ng-if="media"  class="profile-images">
-    <p>Checkout {{place.title}} on Instagram</p>
+  <div data-ng-if="media"  class="profile-images animated fadeIn">
     <a target="_blank" data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
       <img data-ng-src="{{m.images.thumbnail.url}}" alt=""/>
       <span  class="socicon">x</span>
     </a>
   </div>
-
-  <p>Voted : {{voted}}</p>
 
 </div>
 
