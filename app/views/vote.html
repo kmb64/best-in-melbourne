@@ -1,22 +1,50 @@
 <a href="/melbourne/{{placeType}}" class="back-button">&#60; back</a>
 
-<div data-ng-if="place && fb" class="card fadeIn animated">
+<div data-ng-if="place" class="card fadeIn animated">
 
-  <div class="cover-image-container">
-    <span class="votes">
-      <ng-pluralize
-        count="place.votes"
-        when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">
-      </ng-pluralize>
-    </span>
-
-    <img class="cover-img" data-ng-src="{{fb.cover.source}}" alt="" />
-
-    <h3>{{place.title}} <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a></h3>
-
+  <div class="profile-picture">
+    <img data-ng-src="{{place.profilePicture}}" alt=""/>
   </div>
-  <p data-ng-if="fb.description" class="description">{{fb.description}}</p>
-  <p data-ng-if="fb.about" class="description">{{fb.about}}</p>
+
+  <div class="profile-info">
+    <h3 class="place-title">{{place.title}}</h3>
+    <ul>
+      <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
+    </ul>
+    <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
+    <a title="{{socialMedia.channel}}" data-ng-switch="socialMedia.channel" data-ng-repeat="socialMedia in place.social | limitTo : 6"
+       target="_blank"
+       href="{{socialMedia.link}}">
+      <span data-ng-switch-when="instagram" class="socicon">x</span>
+      <span data-ng-switch-when="facebook" class="socicon">b</span>
+      <span data-ng-switch-when="twitter" class="socicon">a</span>
+      {{socialMedia.name}}</a>
+  </div>
+
+  <div class="voting">
+      <span>
+        <ng-pluralize
+          count="place.votes"
+          when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">
+        </ng-pluralize>
+      </span>
+  </div>
+
+  <!--<div class="cover-image-container">-->
+    <!--<span class="votes">-->
+      <!--<ng-pluralize-->
+        <!--count="place.votes"-->
+        <!--when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">-->
+      <!--</ng-pluralize>-->
+    <!--</span>-->
+
+    <!--<img class="cover-img" data-ng-src="{{fb.cover.source}}" alt="" />-->
+
+    <!--<h3>{{place.title}} <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a></h3>-->
+
+  <!--</div>-->
+  <!--<p data-ng-if="fb.description" class="description">{{fb.description}}</p>-->
+  <!--<p data-ng-if="fb.about" class="description">{{fb.about}}</p>-->
 
   <ul>
     <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
@@ -24,7 +52,8 @@
 
   <br>
 
-  <div class="profile-images">
+  <div data-ng-if="media"  class="profile-images">
+    <p>Checkout {{place.title}} on Instagram</p>
     <a target="_blank" data-ng-repeat="m in media | limitTo : 8" href="{{m.link}}">
       <img data-ng-src="{{m.images.thumbnail.url}}" alt=""/>
       <span  class="socicon">x</span>
