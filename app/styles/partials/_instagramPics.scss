@@ -1,0 +1,28 @@
+.profile-images {
+  margin : 6px 0;
+  a {
+    display : inline-block;
+    position : relative;
+    margin : 0;
+    span {
+      display : inline-block;
+      color : $white;
+      background : $lightCharcoal;
+      position : absolute;
+      border-radius : 2px;
+      bottom : 0;
+      right : 0;
+      padding : 3px;
+    }
+
+  }
+  img {
+    margin : 0 auto;
+    display : block;
+    box-shadow: $boxShadow;
+    border-radius : 2px;
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
+  }
+}

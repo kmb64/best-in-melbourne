@@ -22,10 +22,6 @@ angular.module('bestInMelbourneApp')
       place.$loaded(function(){
         place.$bindTo($scope, 'place');
 
-        //var instagram = _.find(place.social, function(socialObj){
-        //  return socialObj.channel === 'instagram';
-        //});
-
         if(typeof place.social.instagram !== 'undefined') {
           Social.getRecentMedia(place.social.instagram).then(function(response){
             $scope.media = response;
@@ -33,19 +29,8 @@ angular.module('bestInMelbourneApp')
         }
 
         Social.assignProfilePicture(place.social).then(function (response) {
-          console.log(response);
-          place.profilePicture = response;
+          $scope.place.profilePicture = response;
         });
-
-        //var facebook = _.find(place.social, function(socialObj){
-        //  return socialObj.channel === 'facebook';
-        //});
-        //
-        //if(facebook) {
-        //  Social.getFBProfile(facebook).then(function(response){
-        //    $scope.fb = response;
-        //  });
-        //}
 
         userAccount.getAccount('1234').then(function(response){
           console.log('get account loaded');
