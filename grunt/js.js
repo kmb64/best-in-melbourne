@@ -17,15 +17,18 @@ module.exports = function (grunt) {
     copy : {
       js: {
         files: {
-          //'<%= mcac.tmp.base %>/scripts/angular.js': [
-          //  'node_modules/angular/angular.js'
-          //],
-          //'<%= mcac.tmp.base %>/scripts/angular-messages.js': [
-          //  'node_modules/angular-messages/angular-messages.js'
-          //],
-          //'<%= mcac.tmp.base %>/scripts/testFormController.js': [
-          //  '<%= mcac.app.base %>/scripts/testFormController.js'
-          //]
+          '<%= mcac.tmp.base %>/bower_components/angular/angular.js': [
+            'bower_components/angular/angular.min.js'
+          ],
+          '<%= mcac.tmp.base %>/bower_components/angular-route/angular-route.js': [
+            'bower_components/angular-route/angular-route.min.js'
+          ],
+          '<%= mcac.tmp.base %>/bower_components/firebase/firebase.js': [
+            'bower_components/firebase/firebase.js'
+          ],
+          '<%= mcac.tmp.base %>/bower_components/angularfire/dist/angularfire.js': [
+            'bower_components/angularfire/dist/angularfire.min.js'
+          ]
         }
       }
     },
@@ -48,7 +51,7 @@ module.exports = function (grunt) {
     uglify: {
       options: {
         sourceMap: true,
-        beautify: true,
+        beautify: false,
         compress: false,
         mangle: false
       },

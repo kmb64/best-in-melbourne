@@ -10,12 +10,7 @@
  */
 angular
   .module('bestInMelbourneApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch',
     'firebase'
   ])
   .config(function ($locationProvider, $routeProvider) {

@@ -20,6 +20,20 @@ module.exports = function (grunt) {
         cwd: '<%= mcac.app.base %>/styles/fonts/',
         dest: '<%= mcac.tmp.base %>/styles/fonts/',
         src: '*'
+      },
+      animate : {
+        files: {
+          '<%= mcac.tmp.base %>/bower_components/animate.css/animate.css': [
+            'bower_components/animate.css/animate.min.css'
+          ]
+        }
+      },
+      favicon : {
+        files: {
+          '<%= mcac.tmp.base %>/favicon.ico': [
+            '<%= mcac.app.base %>/favicon.ico'
+          ]
+        }
       }
     },
 

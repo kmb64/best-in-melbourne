@@ -27,7 +27,24 @@ module.exports = function (grunt) {
     },
 
     clean: {
-      tmp: '<%= mcac.tmp.base %>'
+      tmp: '<%= mcac.tmp.base %>',
+      dist : 'dist'
+    },
+
+    copy : {
+      dist : {
+        expand: true,
+        cwd: '<%= mcac.tmp.base %>/',
+        dest: 'dist/',
+        src: '**/*'
+      },
+      firebase : {
+        files: {
+          'dist/firebase.json': [
+            '<%= mcac.app.base %>/firebase.json'
+          ]
+        }
+      }
     }
 
   });
@@ -66,5 +83,12 @@ module.exports = function (grunt) {
     'connect:test',
     'protractor'
     ]);
+
+  grunt.registerTask('dist', [
+    'build',
+    //'test',
+    'copy:dist',
+    'copy:firebase'
+  ]);
 
 };
