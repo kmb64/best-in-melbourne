@@ -1,6 +1,40 @@
 {
   "melbourne" : {
-    "burger" : [ {
+    "burger" : [
+      {
+        "social" : {
+          "facebook" : {
+            "channel" : "facebook",
+            "link" : "https://www.facebook.com/pages/Mammys-Boy/1548916635343022",
+            "name" : "Mammy's Boy",
+            "userId" : "1548916635343022"
+          },
+          "instagram" : {
+            "channel" : "instagram",
+            "link" : "https://instagram.com/mammysboystkilda/",
+            "name" : "mammysboystkilda",
+            "userId" : "1507079843"
+          }
+        },
+        "title" : "Mammy's Boy Chip Shop",
+        "venues" : [ {
+          "address" : "5 Shakespeare Grove",
+          "postcode" : "3182",
+          "state" : "VIC",
+          "suburb" : "St Kilda"
+        } ],
+        "votes" : 0,
+        "website" : {
+          "link" : "http://www.mammysboy.com/",
+          "name" : "www.mammysboy.com/"
+        }
+      },
+
+
+
+
+
+      {
       "social" : {
         "facebook" : {
           "channel" : "facebook",
