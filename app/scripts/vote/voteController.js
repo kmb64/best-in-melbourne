@@ -29,12 +29,10 @@ angular.module('bestInMelbourneApp')
         }
 
         Social.assignProfilePicture(place.social).then(function (response) {
-          $scope.place.profilePicture = response;
+          $scope.profilePic = response;
         });
 
         userAccount.getAccount('1234').then(function(response){
-          console.log('get account loaded');
-          console.log(response);
           $scope.voted = vote.hasUserVoted(response, $routeParams.city, $routeParams.type,$routeParams.place)
         });
 
