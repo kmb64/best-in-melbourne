@@ -1,20 +1,20 @@
 {
   "melbourne" : {
     "burger" : [ {
-      "social" : [ {
-        "channel" : "instagram",
-        "link" : "https://instagram.com/theroyalebros/",
-        "name" : "theroyalebros",
-        "userId" : "649901699"
-      },
-        {
+      "social" : {
+        "facebook" : {
           "channel" : "facebook",
           "link" : "https://www.facebook.com/theroyalebros",
           "name" : "Royale Brothers",
           "userId" : "601028979956391"
+        },
+        "instagram" : {
+          "channel" : "instagram",
+          "link" : "https://instagram.com/theroyalebros/",
+          "name" : "theroyalebros",
+          "userId" : "649901699"
         }
-
-      ],
+      },
       "title" : "Royale Brothers",
       "venues" : [ {
         "address" : "Rear 1 Church Street",
@@ -28,12 +28,20 @@
         "name" : "royalebrothers.com.au/"
       }
     }, {
-      "social" : [ {
-        "channel" : "instagram",
-        "link" : "https://instagram.com/grandtrailerpark/",
-        "name" : "grandtrailerpark",
-        "userId" : "1536176574"
-      } ],
+      "social" : {
+        "facebook" : {
+          "channel" : "facebook",
+          "link" : "https://www.facebook.com/grandtrailerparktaverna",
+          "name" : "Grand Trailer Park Taverna",
+          "userId" : "390856864400543"
+        },
+        "instagram" : {
+          "channel" : "instagram",
+          "link" : "https://instagram.com/grandtrailerpark/",
+          "name" : "grandtrailerpark",
+          "userId" : "1536176574"
+        }
+      },
       "title" : "The Grand Trailer Park Taverna",
       "venues" : [ {
         "address" : "87 Bourke Street",
@@ -47,12 +55,20 @@
         "name" : "grandtrailerpark.com.au/"
       }
     }, {
-      "social" : [ {
-        "channel" : "instagram",
-        "link" : "https://instagram.com/humburgermelb/",
-        "name" : "humburgermelb",
-        "userId" : "731652740"
-      } ],
+      "social" : {
+        "facebook" : {
+          "channel" : "facebook",
+          "link" : "https://www.facebook.com/pages/Humburger/366710870142399",
+          "name" : "Humburger",
+          "userId" : "366710870142399"
+        },
+        "instagram" : {
+          "channel" : "instagram",
+          "link" : "https://instagram.com/humburgermelb/",
+          "name" : "humburgermelb",
+          "userId" : "731652740"
+        }
+      },
       "title" : "Humburger",
       "venues" : [ {
         "address" : "789 Glenferrie Road",
@@ -60,18 +76,20 @@
         "state" : "VIC",
         "suburb" : "Hawthorn"
       } ],
-      "votes" : 7,
+      "votes" : 20,
       "website" : {
         "link" : "http://www.humburger.com.au/",
         "name" : "humburger.com.au/"
       }
     }, {
-      "social" : [ {
-        "channel" : "facebook",
-        "link" : "http://www.facebook.com/brotherburger",
-        "name" : "Brother Burger and The Marvellous Brew",
-        "userId" : "172285316237538"
-      } ],
+      "social" : {
+        "facebook" : {
+          "channel" : "facebook",
+          "link" : "http://www.facebook.com/brotherburger",
+          "name" : "Brother Burger and The Marvellous Brew",
+          "userId" : "172285316237538"
+        }
+      },
       "title" : "Brother Burger and The Marvellous Brew",
       "venues" : [ {
         "address" : "413 Brunswick Street",
@@ -86,12 +104,20 @@
       }
     } ],
     "coffee" : [ {
-      "social" : [ {
-        "channel" : "instagram",
-        "link" : "https://instagram.com/humburgermelb/",
-        "name" : "humburgermelb",
-        "userId" : "731652740"
-      } ],
+      "social" : {
+        "facebook" : {
+          "channel" : "facebook",
+          "link" : "https://www.facebook.com/pages/Humburger/366710870142399",
+          "name" : "Humburger",
+          "userId" : "366710870142399"
+        },
+        "instagram" : {
+          "channel" : "instagram",
+          "link" : "https://instagram.com/humburgermelb/",
+          "name" : "humburgermelb",
+          "userId" : "731652740"
+        }
+      },
       "title" : "Humburger coffee co",
       "venues" : [ {
         "address" : "789 Glenferrie Road",
@@ -106,17 +132,13 @@
       }
     } ]
   },
-
   "userAccounts" : {
     "1234" : {
       "favourites" : {
         "melbourne" : {
-          "burger" : [
-            "0"
-          ]
+          "burger" : [ "0" ]
         }
       }
-
     }
   }
 }
