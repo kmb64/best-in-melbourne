@@ -1,0 +1,57 @@
+<form ng-submit="add()">
+  <p>Add new place</p>
+  <input ng-model="place.title"  autofocus type="text" placeholder="Title"/>
+  <input ng-model="place.website.link"  autofocus type="text" placeholder="Website link"/>
+  <input ng-model="place.website.name" type="text" placeholder="Website link"/>
+  <p>Social</p>
+  <input id="facebook" type="checkbox" ng-model="facebook"/>
+  <label for="facebook">Facebook</label>
+  <div ng-if="facebook">
+    <input ng-model="place.facebook.channel" type="hidden" value="facebook" />
+    <input ng-model="place.facebook.link" type="text" placeholder="Facebook link" />
+    <input ng-model="place.facebook.name" type="text" placeholder="Facebook name" />
+    <input ng-model="place.facebook.userId" type="number" placeholder="Facebook user id" />
+  </div>
+  <input id="instagram" type="checkbox" ng-model="instagram"/>
+  <label for="instagram">Instagram</label>
+  <div ng-if="instagram">
+    <input ng-model="place.instagram.channel" type="hidden" value="instagram" />
+    <input ng-model="place.instagram.link" type="text" placeholder="Instagram link" />
+    <input ng-model="place.instagram.name" type="text" placeholder="Instagram name" />
+    <input ng-model="place.instagram.userId" type="number" placeholder="Instagram user id" />
+  </div>
+  <p>Venue</p>
+  <input ng-model="place.venue[0].suburb" type="text" placeholder="Suburb"/>
+  <br/>
+  <button type="submit">Add</button>
+</form>
+
+
+<!--{-->s
+<!--"social" : {-->
+<!--"facebook" : {-->
+<!--"channel" : "facebook",-->
+<!--"link" : "https://www.facebook.com/pages/Mammys-Boy/1548916635343022",-->
+<!--"name" : "Mammy's Boy",-->
+<!--"userId" : "1548916635343022"-->
+<!--},-->
+<!--"instagram" : {-->
+<!--"channel" : "instagram",-->
+<!--"link" : "https://instagram.com/mammysboystkilda/",-->
+<!--"name" : "mammysboystkilda",-->
+<!--"userId" : "1507079843"-->
+<!--}-->
+<!--},-->
+<!--"title" : "Mammy's Boy Chip Shop",-->
+<!--"venues" : [ {-->
+<!--"address" : "5 Shakespeare Grove",-->
+<!--"postcode" : "3182",-->
+<!--"state" : "VIC",-->
+<!--"suburb" : "St Kilda"-->
+<!--} ],-->
+<!--"votes" : 0,-->
+<!--"website" : {-->
+<!--"link" : "http://www.mammysboy.com/",-->
+<!--"name" : "www.mammysboy.com/"-->
+<!--}-->
+<!--},-->

@@ -16,13 +16,13 @@ angular
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
+      .when('/admin/place/:city/:type', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminPlaceCtrl'
+      })
       .when('/:city/:type', {
         templateUrl: 'views/place.html',
         controller: 'PlaceCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .when('/:city/:type/vote/:place', {
         templateUrl: 'views/vote.html',
