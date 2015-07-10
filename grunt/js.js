@@ -58,8 +58,8 @@ module.exports = function (grunt) {
       js: {
         files: {
           '<%= mcac.tmp.base %>/scripts/app.js': [
-            '<%= mcac.app.base %>/app.js',
-            '<%= mcac.app.base %>/config.js',
+            '<%= mcac.app.base %>/scripts/app.js',
+            '<%= mcac.app.base %>/scripts/config.js',
             '<%= mcac.app.base %>/scripts/{,*/}*.js'
           ]
         }
