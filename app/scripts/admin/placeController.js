@@ -4,6 +4,8 @@ angular.module('bestInMelbourneApp')
   .controller('AdminPlaceCtrl', ['$scope', '$firebaseArray', 'Social', 'config', '$routeParams', '$location',
     function ($scope, $firebaseArray, Social, config, $routeParams, $location) {
 
+      $scope.$parent.city = $routeParams.city;
+
       var ref = new Firebase(config.firebase + $routeParams.city + '/' + $routeParams.type);
       var list = $firebaseArray(ref);
 
