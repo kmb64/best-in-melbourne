@@ -14,6 +14,7 @@ angular.module('bestInMelbourneApp')
 
       var ref = new Firebase(config.firebase + $routeParams.city + '/' + $routeParams.type);
       $scope.$parent.placeType = $routeParams.type;
+      $scope.$parent.city = $routeParams.city;
 
       $firebaseArray(ref).$loaded(function (places) {
         $scope.places = places;

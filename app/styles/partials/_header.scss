@@ -7,6 +7,9 @@
     color : $headerText;
     margin : 0;
     font-weight: 300;
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 .content-heading {

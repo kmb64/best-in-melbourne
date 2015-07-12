@@ -13,10 +13,12 @@ angular.module('bestInMelbourneApp')
   .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth', 'userAccount', 'vote',
     function ($scope, $firebaseObject, config, $routeParams, Social, Auth, userAccount, vote) {
 
+      $scope.$parent.city = $routeParams.city;
+      $scope.$parent.placeType = $routeParams.type;
+
       var ref = new Firebase(config.firebase + $routeParams.city + '/' + $routeParams.type + '/' + $routeParams.place);
       var place = $firebaseObject(ref);
 
-      $scope.$parent.placeType = $routeParams.type;
       var auth = Auth.getAuth();
 
       place.$loaded(function(){
