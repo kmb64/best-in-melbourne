@@ -6,9 +6,9 @@
   display : inline-block;
 }
 
-.cta {
+.cta, button {
   display: block;
-  border-radius: 2px;
+  border-radius: $borderRadius;
   background: $purple;
   border: 2px solid $purple;
   padding: 10px;

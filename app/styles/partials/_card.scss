@@ -5,7 +5,7 @@ $inner-gutter : 6px;
   padding : $inner-gutter;
   margin: 0 0 10px 0;
   color : $bodyText;
-  border-radius : 2px;
+  border-radius : $borderRadius;
   box-shadow: $boxShadow;
   font-size: 12px;
   position : relative;
@@ -16,7 +16,7 @@ $inner-gutter : 6px;
 
   .profile-picture {
     img {
-      border-radius : 2px;
+      border-radius : $borderRadius;
       width : 70px;
       height: 70px;
       box-shadow: $boxShadow;

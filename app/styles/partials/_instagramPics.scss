@@ -9,7 +9,7 @@
       color : $white;
       background : $lightCharcoal;
       position : absolute;
-      border-radius : 2px;
+      border-radius : $borderRadius;
       bottom : 0;
       right : 0;
       padding : 3px;
@@ -20,7 +20,7 @@
     margin : 0 auto;
     display : block;
     box-shadow: $boxShadow;
-    border-radius : 2px;
+    border-radius : $borderRadius;
     max-width: 100%;
     height: auto;
     max-height: 60px;
