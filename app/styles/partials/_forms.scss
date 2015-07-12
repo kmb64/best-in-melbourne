@@ -1,0 +1,52 @@
+form {
+
+  width : 80%;
+  margin : 20px auto;
+
+  input {
+    box-shadow: $boxShadow;
+  }
+
+  input[type=text] {
+    display : block;
+    width : 100%;
+    padding : 10px;
+    margin : 10px 0;
+    border : 1px solid $bodyBackground;
+    border-radius : $borderRadius;
+
+    &:focus {
+      outline : 0;
+      border-width : 2px;
+    }
+
+    &.ng-invalid {
+      border-color : $purple;
+    }
+  }
+
+  input[type=checkbox] {
+    margin-right: 10px;
+  }
+
+  .actions {
+    height : 60px;
+    position : relative;
+    button {
+      position : absolute;
+      right : 0;
+      bottom : 0;
+    }
+  }
+
+  a {
+    color : $purple;
+    text-decoration: underline;
+  }
+
+  li {
+    display : block;
+    margin : 20px 0;
+  }
+
+}

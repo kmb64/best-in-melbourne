@@ -1,16 +1,28 @@
 'use strict';
 
 angular.module('bestInMelbourneApp')
-  .controller('AdminPlaceCtrl', ['$scope', '$firebaseArray', 'Social', 'config', '$routeParams',
-    function ($scope, $firebaseArray, Social, config, $routeParams) {
+  .controller('AdminPlaceCtrl', ['$scope', '$firebaseArray', 'Social', 'config', '$routeParams', '$location',
+    function ($scope, $firebaseArray, Social, config, $routeParams, $location) {
 
       var ref = new Firebase(config.firebase + $routeParams.city + '/' + $routeParams.type);
       var list = $firebaseArray(ref);
 
+      $scope.type = $routeParams.type;
       $scope.place = {};
 
-      $scope.add = function () {
-        list.$add($scope.place);
+      var add = function () {
+        $scope.place.votes = 0;
+        list.$add($scope.place).then(function() {
+          $location.path('/melbourne/burger');
+          $location.replace();
+        });
+      };
+
+      $scope.submit = function() {
+        if($scope.adminPlaceForm.$invalid) {
+          return false;
+        }
+        add();
       };
 
     }]);

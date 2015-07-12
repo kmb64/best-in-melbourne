@@ -1,33 +1,60 @@
-<form ng-submit="add()">
-  <p>Add new place</p>
-  <input ng-model="place.title"  autofocus type="text" placeholder="Title"/>
-  <input ng-model="place.website.link"  autofocus type="text" placeholder="Website link"/>
-  <input ng-model="place.website.name" type="text" placeholder="Website link"/>
-  <p>Social</p>
-  <input id="facebook" type="checkbox" ng-model="facebook"/>
-  <label for="facebook">Facebook</label>
-  <div ng-if="facebook">
-    <input ng-model="place.facebook.channel" type="hidden" value="facebook" />
-    <input ng-model="place.facebook.link" type="text" placeholder="Facebook link" />
-    <input ng-model="place.facebook.name" type="text" placeholder="Facebook name" />
-    <input ng-model="place.facebook.userId" type="number" placeholder="Facebook user id" />
-  </div>
-  <input id="instagram" type="checkbox" ng-model="instagram"/>
-  <label for="instagram">Instagram</label>
-  <div ng-if="instagram">
-    <input ng-model="place.instagram.channel" type="hidden" value="instagram" />
-    <input ng-model="place.instagram.link" type="text" placeholder="Instagram link" />
-    <input ng-model="place.instagram.name" type="text" placeholder="Instagram name" />
-    <input ng-model="place.instagram.userId" type="number" placeholder="Instagram user id" />
-  </div>
-  <p>Venue</p>
-  <input ng-model="place.venue[0].suburb" type="text" placeholder="Suburb"/>
-  <br/>
-  <button type="submit">Add</button>
-</form>
+<h2 class="content-heading">Add a new <span class="animated bounceInRight">
+  <span class="place-type">{{type}}</span></span> place</h2>
+
+<div class="card animated fadeIn">
+
+  <form name="adminPlaceForm" ng-submit="submit()" autocomplete="off" novalidate>
+
+    <input ng-required="true" ng-model="place.title"  autofocus type="text" placeholder="Title"/>
+    <input ng-required="true" ng-model="place.website.link"  autofocus type="text" placeholder="Website link"/>
+    <input ng-required="true" ng-model="place.website.name" type="text" placeholder="Website name"/>
+
+    <p>Social</p>
+
+    <ul>
+      <li>
+        <input id="instagram" type="checkbox" ng-model="instagram"/>
+        <label for="instagram">Instagram</label></li>
+      <div ng-if="instagram" class="animated fadeIn" ng-init="place.social.instagram.channel = 'instagram'">
+
+        <input ng-required="true" ng-model="place.social.instagram.link" type="text" placeholder="Instagram link" />
+        <input ng-required="true" ng-model="place.social.instagram.name" type="text" placeholder="Instagram name" />
+        <input ng-required="true" ng-model="place.social.instagram.userId" type="text" placeholder="Instagram user id" />
+
+        <a target="_blank" href="http://jelled.com/instagram/lookup-user-id">Find a place's instagram id here</a>
+
+      </div>
+      <li>
+
+        <input id="facebook" type="checkbox" ng-model="facebook"/>
+        <label for="facebook">Facebook</label>
+
+        <div ng-if="facebook" class="animated fadeIn" ng-init="place.social.facebook.channel = 'facebook'">
+
+          <input ng-required="true" ng-model="place.social.facebook.link" type="text" placeholder="Facebook link" />
+          <input ng-required="true" ng-model="place.social.facebook.name" type="text" placeholder="Facebook name" />
+          <input ng-required="true" ng-model="place.social.facebook.userId" type="text" placeholder="Facebook user id" />
+
+          <a target="_blank" href="http://findmyfacebookid.com/">Find a place's facebook id here</a>
+
+        </div>
+      </li>
+    </ul>
+
+    <p>Venue</p>
+
+    <input ng-required="true" ng-model="place.venues[0].suburb" type="text" placeholder="Suburb"/>
+
+    <div class="actions">
+      <button type="submit">Add</button>
+    </div>
+
+  </form>
+
+</div>
 
 
-<!--{-->s
+<!--{-->
 <!--"social" : {-->
 <!--"facebook" : {-->
 <!--"channel" : "facebook",-->
