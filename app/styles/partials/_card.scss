@@ -49,6 +49,11 @@ $inner-gutter : 6px;
     margin-left: $inner-gutter;
     float : right;
 
+    &.profile {
+      font-size : 16px;
+      color : $purple;
+    }
+
     .vote-btn {
       bottom: $inner-gutter;
       right: $inner-gutter;

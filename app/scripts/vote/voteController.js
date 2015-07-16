@@ -13,10 +13,15 @@ angular.module('bestInMelbourneApp')
   .controller('VoteCtrl', ['$scope', '$firebaseObject', 'config', '$routeParams', 'Social', 'Auth', 'userAccount', 'vote',
     function ($scope, $firebaseObject, config, $routeParams, Social, Auth, userAccount, vote) {
 
-      $scope.$parent.city = $routeParams.city;
-      $scope.$parent.placeType = $routeParams.type;
+      var city = $routeParams.city,
+        placeType = $routeParams.type,
+        placeId = $routeParams.place,
+        favourites;
 
-      var ref = new Firebase(config.firebase + $routeParams.city + '/' + $routeParams.type + '/' + $routeParams.place);
+      $scope.$parent.city = city;
+      $scope.$parent.placeType = placeType;
+
+      var ref = new Firebase(config.firebase + city + '/' + placeType + '/' + placeId);
       var place = $firebaseObject(ref);
 
       var auth = Auth.getAuth();
@@ -34,15 +39,28 @@ angular.module('bestInMelbourneApp')
           $scope.profilePic = response;
         });
 
-        userAccount.getAccount('1234').then(function(response){
-          $scope.voted = vote.hasUserVoted(response, $routeParams.city, $routeParams.type,$routeParams.place)
-        });
+        $scope.vote = function() {
+          $scope.place.votes += 1;
+          favourites.$add(placeId).then(function(){
+            $scope.voted = true;
+          });
+        };
 
       });
 
       auth.$onAuth(function (authData) {
-        console.log(authData);
         $scope.authorized = authData;
+        if(authData) {
+          favourites = userAccount.getUserFavourites($scope.authorized.uid, city, placeType);
+          favourites.$loaded(function(places){
+            angular.forEach(places, function(place){
+              if(place.$value === placeId) {
+                $scope.voted = true;
+              }
+            });
+
+          });
+        }
       });
 
       $scope.getAuthorized = function (provider) {

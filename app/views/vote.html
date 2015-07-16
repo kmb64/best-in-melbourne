@@ -21,7 +21,7 @@
       {{socialMedia.name}}</a>
   </div>
 
-  <div class="voting">
+  <div ng-class="{'animated wobble' : voted}" class="profile voting">
       <span>
         <ng-pluralize
           count="place.votes"
@@ -49,6 +49,6 @@
 </div>
 
 <div class="card" data-ng-if="authorized">
-  <a class="big cta" data-ng-if="!voted" data-ng-click="place.votes = place.votes + 1">Confirm your vote</a>
+  <a class="big cta" data-ng-if="!voted" data-ng-click="vote()">Confirm your vote</a>
   <a class="big cta" data-ng-click="logOut()">Log out</a>
 </div>
