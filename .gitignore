@@ -9,5 +9,5 @@ bower_components
 _SpecRunner.html
 bin
 build/
-src/config/app.templates.js
+src/js/config/app.templates.js
 
