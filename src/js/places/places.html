@@ -1,0 +1,37 @@
+<ul id="place-list" data-ng-if="places">
+  <li class="animated fadeInUp card" data-ng-repeat="place in places| orderBy:'-votes'">
+
+    <div class="profile-picture">
+      <a href="{{'/' + city  +'/' + placeType + '/vote/' + place.$id}}">
+        <img data-ng-src="{{place.profilePicture}}" alt=""/>
+      </a>
+    </div>
+
+    <div class="profile-info">
+      <a href="{{'/' + city  +'/' + placeType + '/vote/' + place.$id}}"><h3 class="place-title">{{place.title}}</h3></a>
+      <ul>
+        <li data-ng-repeat="venue in place.venues">{{venue.suburb}}</li>
+      </ul>
+      <a target="_blank" href="{{place.website.link}}">{{place.website.name}}</a>
+      <a title="{{socialMedia.channel}}" data-ng-switch="socialMedia.channel" data-ng-repeat="socialMedia in place.social | limitTo : 6"
+         target="_blank"
+         href="{{socialMedia.link}}">
+        <span data-ng-switch-when="instagram" class="socicon">x</span>
+        <span data-ng-switch-when="facebook" class="socicon">b</span>
+        <span data-ng-switch-when="twitter" class="socicon">a</span>
+        {{socialMedia.name}}</a>
+    </div>
+
+    <div class="voting">
+      <span>
+        <ng-pluralize
+          count="place.votes"
+          when="{'0': 'No votes', '1': '1 vote','other': '{} votes'}">
+        </ng-pluralize>
+      </span>
+      <a class="vote-btn cta" href="{{'/' + city  +'/' + placeType + '/vote/' + place.$id}}">Vote</a>
+    </div>
+
+
+  </li>
+</ul>

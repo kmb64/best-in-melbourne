@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  padding : 10px;
+  background : $headerBackground;
+  border-bottom: 1px solid #3d3d3d;
+  h1 {
+    color : $headerText;
+    margin : 0;
+    font-weight: 300;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+.content-heading {
+  color : #fff;
+  margin: 0 0 10px 0;
+}
+
+.place-type {
+  color : $headerText;
+  font-weight:normal;
+}
