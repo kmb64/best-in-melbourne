@@ -10,4 +10,4 @@ _SpecRunner.html
 bin
 build/
 src/js/config/app.templates.js
-
+coverage/
