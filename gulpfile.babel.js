@@ -1,31 +1,32 @@
-var gulp = require('gulp');
-var notify = require('gulp-notify');
-var source = require('vinyl-source-stream');
-var browserify = require('browserify');
-var babelify = require('babelify');
-var ngAnnotate = require('browserify-ngannotate');
-var browserSync = require('browser-sync').create();
-var rename = require('gulp-rename');
-var templateCache = require('gulp-angular-templatecache');
-var uglify = require('gulp-uglify');
-var merge = require('merge-stream');
-var sass = require('gulp-sass');
-var del = require('del');
-var istanbul = require('gulp-babel-istanbul');
-var jasmine = require('gulp-jasmine');
-var reporters = require('jasmine-reporters');
+import gulp from 'gulp';
+import notify from 'gulp-notify';
+import source from 'vinyl-source-stream';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import ngAnnotate from 'browserify-ngannotate';
+import browserSync from 'browser-sync';
+import rename from 'gulp-rename';
+import templateCache from 'gulp-angular-templatecache';
+import uglify from 'gulp-uglify';
+import sass from 'gulp-sass';
+import del from 'del';
+import istanbul from 'gulp-babel-istanbul';
+import jasmine from 'gulp-jasmine';
+import reporters from 'jasmine-reporters';
 import gulpProtractor from 'gulp-protractor';
 
-var htmlFiles = 'app/modules/**/*.html';
-var jsFiles = 'app/modules/**/*.js';
-var scssFiles = 'app/styles/**/*.scss';
+const htmlFiles = 'app/modules/**/*.html';
+const jsFiles = 'app/modules/**/*.js';
+const scssFiles = 'app/styles/**/*.scss';
 
-var projectDirs = {
+let bs = browserSync.create();
+
+const projectDirs = {
   src: 'app',
   dest: 'build/'
 };
 
-var interceptErrors = function (error) {
+function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);
 
   // Send error to notification center with gulp-notify
@@ -36,9 +37,9 @@ var interceptErrors = function (error) {
 
   // Keep gulp from hanging on this task
   this.emit('end');
-};
+}
 
-gulp.task('browserify', ['views'], function () {
+gulp.task('browserify', ['views'], () => {
   return browserify('./app/app.js')
     .transform(babelify, {presets: ["es2015"]})
     .transform(ngAnnotate)
@@ -50,29 +51,29 @@ gulp.task('browserify', ['views'], function () {
     .pipe(gulp.dest(projectDirs.dest));
 });
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
   return del.sync([projectDirs.dest]);
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
   return gulp.src('./app/styles/app.scss')
     .pipe(sass().on('error', interceptErrors))
     .pipe(gulp.dest(projectDirs.dest + 'styles/'));
 });
 
-gulp.task('uglify', function () {
+gulp.task('uglify', () => {
   return gulp.src(projectDirs.dest + 'app.js')
     .pipe(uglify())
     .pipe(gulp.dest(projectDirs.dest));
 });
 
-gulp.task('html', function () {
+gulp.task('html', () => {
   return gulp.src('app/index.html')
     .on('error', interceptErrors)
     .pipe(gulp.dest(projectDirs.dest));
 });
 
-gulp.task('views', function () {
+gulp.task('views', () => {
   return gulp.src(htmlFiles)
     .pipe(templateCache({
       standalone: true
@@ -82,7 +83,7 @@ gulp.task('views', function () {
     .pipe(gulp.dest('app/modules/config/'));
 });
 
-gulp.task('test:unit', [], function () {
+gulp.task('test:unit', [], () => {
   return gulp.src([jsFiles, '!app/modules/**/test/*.js'])
     .pipe(istanbul({
       includeUntested : true
@@ -101,13 +102,13 @@ gulp.task('test:unit', [], function () {
 
 gulp.task('protractor:webdriver-update', [], gulpProtractor.webdriver_update);
 
-gulp.task('test:functional', ['protractor:webdriver-update', 'serve:test'], function () {
+gulp.task('test:functional', ['protractor:webdriver-update', 'serve:test'], () => {
 
   return gulp.src(['app/modules/**/test/*.fn.js'])
     .pipe(gulpProtractor.protractor())
     .on('error', interceptErrors)
     .on('end', () => {
-      browserSync.exit();
+      bs.exit();
     });
 });
 
@@ -116,7 +117,7 @@ gulp.task('test', ['test:unit', 'test:functional']);
 gulp.task('assets', ['html', 'browserify', 'sass']);
 
 gulp.task('serve', ['assets'], () => {
-  browserSync.init(['./build/**/**.**'], {
+  bs.init(['./build/**/**.**'], {
     server: 'build',
     port: 9000
   });
@@ -129,7 +130,7 @@ gulp.task('serve', ['assets'], () => {
 
 gulp.task('serve:test', ['assets'], () => {
 
-  return browserSync.init({
+  return bs.init({
     server: 'build',
     port: 9000,
     open : false
