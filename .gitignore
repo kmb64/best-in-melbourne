@@ -11,3 +11,4 @@ bin
 build/
 src/js/config/app.templates.js
 coverage/
+app/modules/config/app.templates.js
