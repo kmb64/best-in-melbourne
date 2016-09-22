@@ -1,53 +1,38 @@
 export default class PlacesCtrl {
 
-  constructor($scope, $firebaseArray, $window, $q) {
+  constructor($window, $firebaseArray, $firebaseObject, $stateParams, FacebookService) {
     'ngInject';
 
-    // var ref = firebase.database().ref().child('identities').child('1');
-    // var identitiy = $firebaseObject(ref);
-    // identitiy.$bindTo($scope, "identity");
+    this.$window = $window;
+    this.FacebookService = FacebookService;
 
-    var _facebookCallback = function (response, deferred) {
-      if (!response || response.error) {
-        deferred.reject(false);
-      } else {
-        deferred.resolve(response);
-      }
-    };
+    let entityKeysRef = $window.firebase.database().ref()
+      .child('localities')
+      .child($stateParams.locality)
+      .child($stateParams.type);
 
-    var _facebookApi = function (url, params) {
-      params = (typeof params === 'undefined') ? {} : params;
-      var deferred = $q.defer();
-      $window.FB.api(url, params, function (response) {
-        _facebookCallback(response, deferred);
-      });
-      return deferred.promise;
-    };
+    let entitiesRef = $window.firebase.database().ref()
+      .child('entities');
 
-    let ref = firebase.database().ref().child('melbourne').child('burger');
-    $firebaseArray(ref).$loaded(function (places) {
-      $scope.places = places;
+    let entityKeys = $firebaseArray(entityKeysRef);
+    this.entities = [];
 
-      angular.forEach($scope.places, function (place) {
+    entityKeys.$loaded().then((keys) => {
 
+      keys.map((key) => {
+        let entity = $firebaseObject(entitiesRef.child(key.$id));
 
-        _facebookApi('/' + place.social.facebook.userId + '/picture', profilePicParams).then(function(response){
-          place.profilePicture = response.data.url;
-          console.log(place);
-        }, function(){
-          // deferred.resolve(config.defaultProfilePicture);
+        entity.$loaded((e) => {
+          this.FacebookService.getProfileImage(e.facebook.userId).then((response) => {
+            e.profileImage = response;
+          }).finally(() => {
+            this.entities.push(e);
+          })
         });
 
       });
+
     });
-
-    var profilePicParams = {redirect : false ,width :150};
-
-
-
-
-
-
   }
 
 

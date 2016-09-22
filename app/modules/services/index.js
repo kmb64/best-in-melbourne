@@ -1,4 +1,4 @@
-import CustomerService from './customer.service';
+import FacebookService from './facebook.service';
 
 export default angular.module('app.services', [])
-  .service('customerService', CustomerService).name;
+  .service('FacebookService', FacebookService).name;

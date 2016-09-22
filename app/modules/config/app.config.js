@@ -7,7 +7,7 @@ function AppConfig($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'layout/app-view.html'
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/burger/melbourne');
 
 }
 

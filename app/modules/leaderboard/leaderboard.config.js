@@ -3,7 +3,7 @@ export default function PlacesConfig($stateProvider) {
 
   $stateProvider
     .state('app.places', {
-      url: '/',
+      url: '/:type/:locality',
       controller: 'PlacesCtrl',
       controllerAs: '$ctrl',
       templateUrl: 'leaderboard/leaderboard.html',
