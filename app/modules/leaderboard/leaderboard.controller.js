@@ -1,18 +1,15 @@
-export default class PlacesCtrl {
+export default class LeaderboardCtrl {
 
-  constructor($window, $firebaseArray, $firebaseObject, $stateParams, FacebookService) {
+  constructor($window, $firebaseArray, $firebaseObject, $stateParams, FacebookService, AppConstants) {
     'ngInject';
 
-    this.$window = $window;
-    this.FacebookService = FacebookService;
-
     let entityKeysRef = $window.firebase.database().ref()
-      .child('localities')
+      .child(AppConstants.localities)
       .child($stateParams.locality)
       .child($stateParams.type);
 
     let entitiesRef = $window.firebase.database().ref()
-      .child('entities');
+      .child(AppConstants.entities);
 
     let entityKeys = $firebaseArray(entityKeysRef);
     this.entities = [];
@@ -23,7 +20,7 @@ export default class PlacesCtrl {
         let entity = $firebaseObject(entitiesRef.child(key.$id));
 
         entity.$loaded((e) => {
-          this.FacebookService.getProfileImage(e.facebook.userId).then((response) => {
+          FacebookService.getProfileImage(e.facebook.userId).then((response) => {
             e.profileImage = response;
           }).finally(() => {
             this.entities.push(e);
@@ -34,6 +31,5 @@ export default class PlacesCtrl {
 
     });
   }
-
 
 }

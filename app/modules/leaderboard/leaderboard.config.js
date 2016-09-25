@@ -1,13 +1,12 @@
-export default function PlacesConfig($stateProvider) {
+export default function LeaderboardConfig($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('app.places', {
+    .state('app.leaderboard', {
       url: '/:type/:locality',
-      controller: 'PlacesCtrl',
+      controller: 'LeaderboardCtrl',
       controllerAs: '$ctrl',
-      templateUrl: 'leaderboard/leaderboard.html',
-      title: 'Places'
+      templateUrl: 'leaderboard/leaderboard.html'
     });
 
 }

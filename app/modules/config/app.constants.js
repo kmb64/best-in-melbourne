@@ -1,6 +1,8 @@
 const AppConstants = {
 
-  facebook : '743407799109108'
+  facebook : '743407799109108',
+  localities : 'localities',
+  entities : 'entities'
 
 };
 

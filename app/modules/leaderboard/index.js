@@ -1,16 +1,6 @@
-import angular from 'angular';
+import LeaderboardConfig from './leaderboard.config';
+import LeaderboardCtrl from './leaderboard.controller';
 
-// Create the module where our functionality can attach to
-let placesModule = angular.module('app.leaderboard', []);
-
-// Include our UI-Router config settings
-import PlacesConfig from './leaderboard.config';
-placesModule.config(PlacesConfig);
-
-
-// Controllers
-import PlacesCtrl from './leaderboard.controller';
-placesModule.controller('PlacesCtrl', PlacesCtrl);
-
-
-export default placesModule;
+export default angular.module('app.leaderboard', [])
+  .config(LeaderboardConfig)
+  .controller('LeaderboardCtrl', LeaderboardCtrl).name;
