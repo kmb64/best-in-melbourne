@@ -1,5 +1,7 @@
-function AppConfig($stateProvider, $urlRouterProvider, $httpProvider) {
+function AppConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   'ngInject';
+
+  $locationProvider.html5Mode(true);
 
   $stateProvider
     .state('app', {

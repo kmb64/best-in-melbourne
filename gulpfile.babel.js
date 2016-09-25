@@ -14,6 +14,7 @@ import istanbul from 'gulp-babel-istanbul';
 import jasmine from 'gulp-jasmine';
 import reporters from 'jasmine-reporters';
 import gulpProtractor from 'gulp-protractor';
+import modRewrite  from 'connect-modrewrite';
 
 const htmlFiles = 'app/modules/**/*.html';
 const jsFiles = 'app/modules/**/*.js';
@@ -119,6 +120,11 @@ gulp.task('assets', ['html', 'browserify', 'sass']);
 gulp.task('serve', ['assets'], () => {
   bs.init(['./build/**/**.**'], {
     server: 'build',
+    middleware: [
+      modRewrite([
+        '!\\.\\w+$ /index.html [L]'
+      ])
+    ],
     port: 9000
   });
 
